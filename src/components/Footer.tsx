@@ -29,8 +29,8 @@ export function Footer() {
                 <Image
                   src="/img/logo.png"
                   alt="N"
-                  width="32"
-                  height="32"
+                  width={32}
+                  height={32}
                   className="w-48"
                 />
               </Link>
