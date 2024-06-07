@@ -1,4 +1,3 @@
-import exp from 'constants';
 import Image from 'next/image';
 
 interface CarouselItemProps {
@@ -7,7 +6,6 @@ interface CarouselItemProps {
     link: string;
     imgSrc: any;
 }
-
 const CarouselItem = ({ header, paragraph, link, imgSrc }:CarouselItemProps) => (
     <div className="flex flex-col lg:flex-row items-center w-full">
     <div className="max-w-2xl mb-8 lg:w-1/2">
