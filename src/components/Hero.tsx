@@ -3,6 +3,8 @@ import Slider from "react-slick";
 import CarouselItem from "./CarouselItem";
 import { Container } from "@/components/Container";
 import heroImg from "../../public/img/plant.jpeg";
+import heroImg1 from "../../public/img/plant2.jpeg";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -13,7 +15,7 @@ export const Hero = () => {
     slidesToShow: 1,
     autoplay: true,
     slidesToScroll: 1,
-    arrows: true,
+    arrows: false,
     fade: true,
     autoplaySpeed: 10000,
     pauseOnHover: false,
@@ -30,8 +32,8 @@ export const Hero = () => {
         from across Africa, aims to increase accessibility to healthy, plant-based food 
         options and encourage restaurants to adopt vegan menus. In Kenya, Torch Initiatives 
         is bringing the light of veganism through this campaign.🌱🍽️🎉`}
-              link="/learn-more"
-              imgSrc={heroImg}
+              link="/blog/vegan-restaurant-week"
+              imgSrc={heroImg1}
             />
             <CarouselItem
               header="Advocating for plant based diets for food security, health and ethics in Africa"
