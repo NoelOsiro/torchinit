@@ -2,9 +2,11 @@ import Image from "next/image";
 import React from "react";
 import { Container } from "@/components/Container";
 
-import userOneImg from "../../public/img/user1.jpg";
-import userTwoImg from "../../public/img/user2.jpg";
-import userThreeImg from "../../public/img/user3.jpg";
+import userOneImg from "../../public/img/user1.jpeg";
+import userTwoImg from "../../public/img/user2.jpeg";
+import userThreeImg from "../../public/img/user3.jpeg";
+import userFourImg from "../../public/img/user4.jpeg";
+import userFiveImg from "../../public/img/user5.jpeg";
 
 export const Testimonials = () => {
   return (
@@ -12,43 +14,76 @@ export const Testimonials = () => {
       <div className="grid gap-10 lg:grid-cols-2 xl:grid-cols-3">
         <div className="lg:col-span-2 xl:col-auto">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
-          <Avatar
+            <Avatar
               image={userOneImg}
-              name="Sarah Steiner"
-              title="VP Sales at Google"
+              name="Phanuel Mathenge"
+              title="Head of Logistics"
             />
             <p className="text-2xl leading-normal ">
-              Share a real <Mark>testimonial</Mark>
-              that hits some of your benefits from one of your popular customer.
+              The driving  <Mark>logistical operations</Mark>
+              at Torch Initiatives. Phanuel, as the Logistics Lead at Torch Initiatives,
+              brings extensive experience in optimizing supply chain activities and ensuring
+              seamless coordination for our initiatives. His dedication to efficiency and precision
+              is crucial in executing our projects effectively.
             </p>
 
-            
+
           </div>
         </div>
         <div className="">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
-          <Avatar
+            <Avatar
               image={userTwoImg}
-              name="Dylan Ambrose"
-              title="Lead marketer at Netflix"
+              name="Virginia Ruguru"
+              title="Founder and Team Leader of Torch Initiatives."
             />
             <p className="text-2xl leading-normal ">
-              Make sure you only pick the <Mark>right sentence</Mark>
-              to keep it short and simple.
-            </p>  
+              A passionate  <Mark>advocate for sustainable</Mark>
+              , living and holistic well-being. Her visionary leadership and commitment to transformative
+              impact guide our team towards a brighter, more compassionate future.
+            </p>
           </div>
         </div>
         <div className="">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
-          <Avatar
+            <Avatar
               image={userThreeImg}
-              name="Gabrielle Winn"
-              title="Co-founder of Acme Inc"
+              name="Gitura Mwaura"
+              title="Communications Consultant"
             />
             <p className="text-2xl leading-normal ">
-              This is an <Mark>awesome</Mark> landing page template I&apos;ve
-              seen. I would use this for anything.
-            </p>  
+              A <Mark>seasoned author and journalist</Mark>
+              with a rich background in community development.
+              His expertise in impact assessment, reporting, and documentary production,
+              coupled with his dedication to effective communication, significantly contributes
+              to our mission at Torch Initiatives.
+            </p>
+          </div>
+        </div>
+        <div className="">
+          <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
+            <Avatar
+              image={userFourImg} // replace with Mumbi Gladys's image
+              name="Mumbi Gladys"
+              title="Intern and Youth Mobilizer"
+            />
+            <p className="text-2xl leading-normal ">
+              A <Mark>Kenyan youth and nursing student</Mark>
+              with a passion for social transformation. Currently serving at Torch Initiatives,
+              Mumbi is leveraging her skills to make a positive impact in communities.
+            </p>
+          </div>
+        </div>
+        <div className="lg:col-span-2 xl:col-auto">
+          <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
+            <Avatar
+              image={userFiveImg} // replace with Mary Njeri's image
+              name="Mary Njeri"
+              title="Project Assistant"
+            />
+            <p className="text-2xl leading-normal ">
+              A graduate in Biotechnology, Mary plays a crucial role at Torch Initiatives, advocating for plant-based diets and sustainable agricultural practices. She is dedicated to promoting health and sustainability through innovative projects and community engagement.
+            </p>
           </div>
         </div>
       </div>
@@ -65,9 +100,10 @@ interface AvatarProps {
 function Avatar(props: Readonly<AvatarProps>) {
   return (
     <div className="flex flex-col items-center space-x-3 mb-4">
-      <div className="flex-shrink-0 overflow-hidden rounded-full w-14 h-14">
+      <div className="flex-shrink-0 overflow-hidden rounded-full w-24 h-24">
         <Image
           src={props.image}
+          className="rounded-full w-full h-full mb-4"
           width="40"
           height="40"
           alt="Avatar"

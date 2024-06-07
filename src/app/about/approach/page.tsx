@@ -14,11 +14,14 @@ export default function Programs() {
       <Hero />
 
       <SectionTitle
-        preTitle="Testimonials"
-        title="Here's what our customers said"
+        preTitle="Our Approach"
+        title="Torch Initiatives: Fostering Positive Youth Attitudes and Sustainable Communities"
       >
-        Testimonials is a great way to increase the brand trust and awareness.
-        Use this section to highlight your popular customers.
+      At Torch Initiatives, we are dedicated to social responsibility, 
+      advocating for positive youth attitudes and aptitudes while championing 
+      community sustainability. We emphasize the proper utilization of community 
+      resources, nurturing positive cultures, and responsible stewardship.
+
       </SectionTitle>
 
       <Testimonials />

@@ -29,7 +29,7 @@ export const Navbar = () => {
 
   return (
     <div className="w-full sticky top-0" style={{ backdropFilter: 'blur(10px)', backgroundColor: 'rgba(255, 255, 255, 0.205)' }}>
-      <nav className="container relative flex flex-wrap items-center justify-between p-8 mx-auto lg:justify-between xl:px-0" >
+      <nav className="container relative flex flex-wrap items-center justify-between p-4 mx-auto lg:justify-between xl:px-0" >
         {/* Logo  */}
         <Disclosure>
           {({ open }) => (
