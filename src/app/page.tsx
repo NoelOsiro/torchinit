@@ -37,7 +37,7 @@ export default function Home() {
 
       <Video videoId="Fd4vgWR8gq8" />
 
-      <SectionTitle
+      {/* <SectionTitle
         preTitle="Testimonials"
         title="Here's what our customers said"
       >
@@ -45,14 +45,14 @@ export default function Home() {
         Use this section to highlight your popular customers.
       </SectionTitle>
 
-      <Testimonials />
+      <Testimonials /> */}
 
-      <SectionTitle preTitle="FAQ" title="Frequently Asked Questions">
+      {/* <SectionTitle preTitle="FAQ" title="Frequently Asked Questions">
         Answer your customers possible questions here, it will increase the
         conversion rate as well as support or chat requests.
       </SectionTitle>
 
-      <Faq />
+      <Faq /> */}
       <Cta />
     </Container>
   );
