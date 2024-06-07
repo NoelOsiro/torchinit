@@ -4,8 +4,17 @@ import React from "react";
 import { Container } from "@/components/Container";
 
 export function Footer() {
-  const navigation = ["Product", "Features", "Pricing", "Company", "Blog"];
-  const legal = ["Terms", "Privacy", "Legal"];
+  const sections = [
+    {
+      title: "Navigation",
+      links: ["Programs", "Contact Us", "Our Community", "Blog"],
+    },
+    {
+      title: "Legal",
+      links: ["Terms", "Privacy", "Legal"],
+    },
+  ];
+
   return (
     <div className="relative">
       <Container>
@@ -33,37 +42,27 @@ export function Footer() {
             </div>
           </div>
 
-          <div>
-            <div className="flex flex-wrap w-full -mt-2 -ml-3 lg:ml-0">
-              {navigation.map((item, index) => (
-                <Link
-                  key={index}
-                  href="/"
-                  className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-trueGray-700"
-                >
-                  {item}
-                </Link>
-              ))}
+          {sections.map((section, index) => (
+            <div key={index}>
+              <div className="flex flex-wrap w-full -mt-2 -ml-3 lg:ml-0">
+                {section.links.map((link, index) => (
+                  <Link
+                    key={index}
+                    href="/"
+                    className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-trueGray-700"
+                  >
+                    {link}
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
-          <div>
-            <div className="flex flex-wrap w-full -mt-2 -ml-3 lg:ml-0">
-              {legal.map((item, index) => (
-                <Link
-                  key={index}
-                  href="/"
-                  className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-trueGray-700"
-                >
-                  {item}
-                </Link>
-              ))}
-            </div>
-          </div>
+          ))}
+
           <div className="">
             <div>Follow us</div>
             <div className="flex mt-5 space-x-5 text-gray-400 dark:text-gray-500">
               <a
-                href="https://twitter.com/web3templates"
+                href="https://twitter.com/torchinitiative"
                 target="_blank"
                 rel="noopener"
               >
@@ -71,7 +70,7 @@ export function Footer() {
                 <Twitter />
               </a>
               <a
-                href="https://facebook.com/web3templates"
+                href="https://facebook.com/torchinitiative"
                 target="_blank"
                 rel="noopener"
               >
@@ -79,14 +78,14 @@ export function Footer() {
                 <Facebook />
               </a>
               <a
-                href="https://instagram.com/web3templates"
+                href="https://instagram.com/torchinitiative"
                 target="_blank"
                 rel="noopener"
               >
                 <span className="sr-only">Instagram</span>
                 <Instagram />
               </a>
-              <a href="https://linkedin.com/" target="_blank" rel="noopener">
+              <a href="https://linkedin.com/torchinitiative" target="_blank" rel="noopener">
                 <span className="sr-only">Linkedin</span>
                 <Linkedin />
               </a>
@@ -96,7 +95,7 @@ export function Footer() {
 
         <div className="my-10 text-sm text-center text-gray-600 dark:text-gray-400">
           Copyright © {new Date().getFullYear()}. Made with ♥ by{" "}
-          <a href="https://web3templates.com/" target="_blank" rel="noopener">
+          <a href="https://github.com/NoelOsiro" target="_blank" rel="noopener">
             NoelOsiro
           </a>
         </div>
