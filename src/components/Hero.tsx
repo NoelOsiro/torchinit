@@ -1,48 +1,50 @@
-import Image from "next/image";
+'use client'
+import Slider from "react-slick";
+import CarouselItem from "./CarouselItem";
 import { Container } from "@/components/Container";
 import heroImg from "../../public/img/plant.jpeg";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export const Hero = () => {
+  const settings = {
+    infinite: true,
+    speed: 2000,
+    slidesToShow: 1,
+    autoplay: true,
+    slidesToScroll: 1,
+    arrows: true,
+    fade: true,
+    autoplaySpeed: 10000,
+    pauseOnHover: false,
+  };
   return (
     <>
       <Container className="flex flex-wrap ">
-        <div className="flex items-center w-full lg:w-1/2">
-          <div className="max-w-2xl mb-8">
-            <h1 className="text-4xl font-bold leading-snug tracking-tight text-gray-800 lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white">
-              Advocating for plant based diets for food security, health and ethics in Africa
-            </h1>
-            <p className="py-5 text-xl leading-normal text-gray-500 lg:text-xl xl:text-2xl dark:text-gray-300">
-              Our mission is to promote a healthy, eco-friendly eating lifestyle,
+        <div className="w-full slider-container">
+        <Slider {...settings}>
+            <CarouselItem
+              header="Africa Vegan Restaurant Week🎊, the first of its kind on the continent!🌍 "
+              paragraph={`Torch Initiatives is excited to participate in this Africa-wide 
+        campaign and week-long celebration, organized by activists and organizations 
+        from across Africa, aims to increase accessibility to healthy, plant-based food 
+        options and encourage restaurants to adopt vegan menus. In Kenya, Torch Initiatives 
+        is bringing the light of veganism through this campaign.🌱🍽️🎉`}
+              link="/learn-more"
+              imgSrc={heroImg}
+            />
+            <CarouselItem
+              header="Advocating for plant based diets for food security, health and ethics in Africa"
+              paragraph={`Our mission is to promote a healthy, eco-friendly eating lifestyle,
               recognizing its pivotal role in individual well-being and environmental
               sustainability. We believe that mindful dietary choices contribute to a
-              collective effort towards a healthier planet.
-
-            </p>
-
-            <div className="flex flex-col items-start space-y-3 sm:space-x-4 sm:space-y-0 sm:items-center sm:flex-row">
-              <a
-                href="/programs"
-                target="_blank"
-                rel="noopener"
-                className="px-8 py-4 text-lg font-medium text-center text-white bg-indigo-600 rounded-md ">
-                Learn More
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="flex items-center justify-center w-full lg:w-1/2">
-          <div className="">
-            <Image
-              src={heroImg}
-              width="616"
-              height="617"
-              className={"object-cover rounded-md shadow-lg w-full h-full lg:w-96 lg:h-96 xl:w-96 xl:h-96"}
-              alt="Hero Illustration"
-              loading="eager"
-              placeholder="blur"
+              collective effort towards a healthier planet.`}
+              link="/programs"
+              imgSrc={heroImg}
             />
-          </div>
+          </Slider>
         </div>
+
       </Container>
 
     </>

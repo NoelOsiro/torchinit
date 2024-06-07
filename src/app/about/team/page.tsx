@@ -21,9 +21,8 @@ export default function Programs() {
 
       <Testimonials />
 
-      <SectionTitle preTitle="FAQ" title="Frequently Asked Questions">
-        Answer your customers possible questions here, it will increase the
-        conversion rate as well as support or chat requests.
+      <SectionTitle preTitle="Activities" title="Frequently Asked Questions">
+        
       </SectionTitle>
 
       <Faq />
