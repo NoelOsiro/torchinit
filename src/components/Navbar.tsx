@@ -22,7 +22,7 @@ const navigation: NavigationItem[] = [
   },
   { name: "Programs", url: "/programs" },
   { name: "Contact Us", url: "/contact" },
-  { name: "Our Community", url: "/community" }
+  { name: "Our Community", url: "/blog" }
 ];
 export const Navbar = () => {
 
