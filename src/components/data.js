@@ -11,7 +11,7 @@ import {
 } from "@heroicons/react/24/solid";
 
 import benefitOneImg from "../../public/img/youth.jpg";
-import benefitTwoImg from "../../public/img/benefit-two.png";
+import benefitTwoImg from "../../public/img/empower.jpg";
 import { CloudIcon } from "@heroicons/react/24/solid";
 
 const benefitOne = {
