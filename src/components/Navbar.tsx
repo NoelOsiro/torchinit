@@ -43,9 +43,11 @@ export const Navbar = () => {
                         alt="N"
                         width="32"
                         height="64"
-                        className="w-48"
+                        className="w-24 h-18"
+                        unoptimized={true}
                       />
                     </span>
+                    <span className="hidden text-xl font-bold lg:block">Torch Initiatives</span>
                   </span>
                 </Link>
 
