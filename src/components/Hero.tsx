@@ -2,7 +2,7 @@
 import Slider from "react-slick";
 import CarouselItem from "./CarouselItem";
 import { Container } from "@/components/Container";
-import heroImg from "../../public/img/plant.jpeg";
+import heroImg from "../../public/img/plant.png";
 import heroImg1 from "../../public/img/plant2.png";
 
 import "slick-carousel/slick/slick.css";
