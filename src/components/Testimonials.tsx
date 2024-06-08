@@ -16,6 +16,46 @@ export const Testimonials = () => {
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <Avatar
               image={userOneImg}
+              name="Virginia Ruguru"
+              title="Founder and Team Leader of Torch Initiatives."
+            />
+            <p className="text-2xl leading-normal ">
+              A passionate  <Mark>advocate for sustainable</Mark>
+              , living and holistic well-being. Her visionary leadership and commitment to transformative
+              impact guide our team towards a brighter, more compassionate future.
+            </p>
+          </div>
+        </div>
+        <div className="lg:col-span-2 xl:col-auto">
+          <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
+            <Avatar
+              image={userFiveImg} // replace with Mary Njeri's image
+              name="Mary Njeri"
+              title="Project Assistant"
+            />
+            <p className="text-2xl leading-normal ">
+              A graduate in Biotechnology, Mary plays a crucial role at Torch Initiatives, advocating for plant-based diets and sustainable agricultural practices. She is dedicated to promoting health and sustainability through innovative projects and community engagement.
+            </p>
+          </div>
+        </div>
+        <div className="">
+          <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
+            <Avatar
+              image={userFourImg} // replace with Mumbi Gladys's image
+              name="Mumbi Gladys"
+              title="Intern and Youth Mobilizer"
+            />
+            <p className="text-2xl leading-normal ">
+              A <Mark>Kenyan youth and nursing student</Mark>
+              with a passion for social transformation. Currently serving at Torch Initiatives,
+              Mumbi is leveraging her skills to make a positive impact in communities.
+            </p>
+          </div>
+        </div>
+        <div className="">
+          <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
+            <Avatar
+              image={userTwoImg}
               name="Phanuel Mathenge"
               title="Head of Logistics"
             />
@@ -25,22 +65,6 @@ export const Testimonials = () => {
               brings extensive experience in optimizing supply chain activities and ensuring
               seamless coordination for our initiatives. His dedication to efficiency and precision
               is crucial in executing our projects effectively.
-            </p>
-
-
-          </div>
-        </div>
-        <div className="">
-          <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
-            <Avatar
-              image={userTwoImg}
-              name="Virginia Ruguru"
-              title="Founder and Team Leader of Torch Initiatives."
-            />
-            <p className="text-2xl leading-normal ">
-              A passionate  <Mark>advocate for sustainable</Mark>
-              , living and holistic well-being. Her visionary leadership and commitment to transformative
-              impact guide our team towards a brighter, more compassionate future.
             </p>
           </div>
         </div>
@@ -60,32 +84,8 @@ export const Testimonials = () => {
             </p>
           </div>
         </div>
-        <div className="">
-          <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
-            <Avatar
-              image={userFourImg} // replace with Mumbi Gladys's image
-              name="Mumbi Gladys"
-              title="Intern and Youth Mobilizer"
-            />
-            <p className="text-2xl leading-normal ">
-              A <Mark>Kenyan youth and nursing student</Mark>
-              with a passion for social transformation. Currently serving at Torch Initiatives,
-              Mumbi is leveraging her skills to make a positive impact in communities.
-            </p>
-          </div>
-        </div>
-        <div className="lg:col-span-2 xl:col-auto">
-          <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
-            <Avatar
-              image={userFiveImg} // replace with Mary Njeri's image
-              name="Mary Njeri"
-              title="Project Assistant"
-            />
-            <p className="text-2xl leading-normal ">
-              A graduate in Biotechnology, Mary plays a crucial role at Torch Initiatives, advocating for plant-based diets and sustainable agricultural practices. She is dedicated to promoting health and sustainability through innovative projects and community engagement.
-            </p>
-          </div>
-        </div>
+        
+        
       </div>
     </Container>
   );
