@@ -13,9 +13,8 @@ const blogData = [
       ],
       contents: [
         'Join us from September 2nd to 7th 2024 and be part of this groundbreaking effort!.',
-        'The first Africa Vegan Restaurant Week took place in 2023, attracting 29 organizations and 50 restaurants from 15 different countries, gaining significant global media coverage. We anticipate that the event in 2024 will have twice the impact, and we invite you to join us in this significant endeavor!',
-        'The Africa Vegan Restaurant Week boosts the plant-based food justice movement throughout Africa. It does this by enhancing the availability of nutritious, convenient, plant-based alternatives, substituting animal-based products with healthy, sustainable, plant-based meals in restaurants. Additionally, it raises broad awareness about veganism and the benefits of a healthy diet.',
-        'Why Africa Vegan Restaurant Week? This unique event will give vegans and non-vegans around the continent the chance to enjoy amazing plant-based experiences, while increasing awareness of the impact of animal agriculture on the environment, human health, and animals. Africa Vegan Restaurant Week will also increase the visibility of plant-based alternatives in Africa, and create opportunities for wider and more accessible distribution of African-produced plant-based products. #AfricaVeganRestaurantWeek',
+        'Torch Initiatives is excited to participate in the Africa Vegan Restaurant Week, the first of its kind on the continent! This Africa-wide campaign and week-long celebration, organized by activists and organizations from across Africa, aims to increase accessibility to healthy, plant-based food options and encourage restaurants to adopt vegan menus.',
+        'In Kenya, Torch Initiatives is bringing the light of veganism through this campaign. We invite you to partner with us through participation and team up with us in our planned campaign in September 2024 Volunteer or Support us for the campaign.',
       ],
     },
     // Add more blog posts as needed
