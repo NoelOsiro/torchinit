@@ -24,14 +24,14 @@ export const Hero = () => {
     <>
       <Container className="flex flex-wrap ">
         <div className="w-full slider-container">
-        <Slider {...settings}>
+          <Slider {...settings}>
             <CarouselItem
               header="Africa Vegan Restaurant Week🎊, the first of its kind on the continent!🌍 "
               paragraph={`Torch Initiatives is excited to participate in this Africa-wide 
-        campaign and week-long celebration, organized by activists and organizations 
-        from across Africa, aims to increase accessibility to healthy, plant-based food 
-        options and encourage restaurants to adopt vegan menus. In Kenya, Torch Initiatives 
-        is bringing the light of veganism through this campaign.🌱🍽️🎉`}
+              campaign and week-long celebration, organized by activists and organizations 
+              from across Africa, aims to increase accessibility to healthy, plant-based food 
+              options and encourage restaurants to adopt vegan menus. In Kenya, Torch Initiatives 
+              is bringing the light of veganism through this campaign.🌱🍽️🎉`}
               link="/blog/vegan-restaurant-week"
               imgSrc={heroImg1}
             />
