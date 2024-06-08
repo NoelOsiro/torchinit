@@ -32,6 +32,7 @@ export function Footer() {
                   width={32}
                   height={32}
                   className="w-48"
+                  unoptimized={true}
                 />
               </Link>
             </div>
