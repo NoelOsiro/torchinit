@@ -34,9 +34,6 @@ export function Footer() {
                   className="w-48"
                   unoptimized={true}
                 />
-                <span className="hidden text-xl font-bold lg:block">
-                Torch Initiatives
-              </span>
               </Link>
               
             </div>

@@ -47,7 +47,6 @@ export const Navbar = () => {
                         unoptimized={true}
                       />
                     </span>
-                    <span className="hidden text-xl font-bold lg:block">Torch Initiatives</span>
                   </span>
                 </Link>
 

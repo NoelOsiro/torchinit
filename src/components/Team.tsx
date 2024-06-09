@@ -8,7 +8,7 @@ import userThreeImg from "../../public/img/user3.jpeg";
 import userFourImg from "../../public/img/user4.jpeg";
 import userFiveImg from "../../public/img/user5.jpeg";
 
-export const Testimonials = () => {
+export const Team= () => {
   return (
     <Container>
       <div className="grid gap-10 lg:grid-cols-2 xl:grid-cols-3">
