@@ -43,11 +43,14 @@ export const Navbar = () => {
                         alt="N"
                         width="32"
                         height="64"
-                        className="w-24 h-18"
+                        className="w-20 h-18"
                         unoptimized={true}
+                        priority={false}
                       />
                     </span>
                   </span>
+                  <div>
+                  </div>
                 </Link>
 
                 <Disclosure.Button
