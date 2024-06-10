@@ -43,7 +43,7 @@ export const Approaches = (props: ApproachesProps) => {
 
 const Approach = ({ imgSrc, title, tag, description, buttonText, imgPos = "left" }: ApproachProps) => {
     return (
-        <div className={`flex flex-col overflow-hidden rounded-md shadow-sm lg:flex-${imgPos === "right" ? "row-reverse" : "row"}`}>            <Image
+        <div className={`flex flex-col overflow-hidden rounded-md shadow-sm ${imgPos === "right" ? "lg:flex-row-reverse" : "lg:flex-row"}`}>            <Image
             width={640}
             height={480}
             src={imgSrc}
