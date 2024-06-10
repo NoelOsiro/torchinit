@@ -37,20 +37,15 @@ export const Faq = () => {
 const faqdata = [
   {
     question: "Our Mission",
-    answer: "",
+    answer: "Torch Initiatives is dedicated to catalyzing transformative attitudes, equipping individuals for a brighter future. Through dynamic initiatives, we nurture lasting empowerment and sustainability, resonating through generations in our inspired communities.",
   },
   {
     question: "Our vision",
-    answer: "",
+    answer: "At Torch Initiatives, we envision a future where empowered generations cultivate a transformative mindset, fostering resilient communities that thrive in sustainability, compassion, and positive change",
   },
   {
-    question: "Goals",
+    question: "Our Values",
     answer:
-      "",
-  },
-  {
-    question: "Plans",
-    answer:
-      "",
+      "Our values encompass a commitment to sustainability, inclusivity, integrity, divine guidance, and plant-based advocacy, prioritizing the welfare of humans and animals, while investing in the potential of young people as beacons of hope for the future.",
   },
 ];
