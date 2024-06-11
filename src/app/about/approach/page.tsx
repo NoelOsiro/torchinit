@@ -7,7 +7,6 @@ import { approaches } from "@/components/approachData";
 export default function Programs() {
   return (
     <Container>
-      <Hero />
       <SectionTitle
         preTitle="Our Approach"
         title="Torch Initiatives: Fostering Positive Youth Attitudes and Sustainable Communities"

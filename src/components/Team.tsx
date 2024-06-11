@@ -13,7 +13,7 @@ export const Team= () => {
     <Container>
       <div className="grid gap-10 lg:grid-cols-2 xl:grid-cols-3">
         <div className="lg:col-span-2 xl:col-auto">
-          <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
+          <div className="flex flex-col justify-center w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <Avatar
               image={userTwoImg}
               name="Virginia Ruguru"
@@ -27,7 +27,7 @@ export const Team= () => {
           </div>
         </div>
         <div className="lg:col-span-1 xl:col-auto">
-          <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
+          <div className="flex flex-col justify-center w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <Avatar
               image={userFiveImg} // replace with Mary Njeri's image
               name="Mary Njeri"
@@ -39,21 +39,22 @@ export const Team= () => {
           </div>
         </div>
         <div className="lg:col-span-1 xl:col-auto">
-          <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
+          <div className="flex flex-col justify-center w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <Avatar
               image={userFourImg} // replace with Mumbi Gladys's image
               name="Mumbi Gladys"
               title="Intern and Youth Mobilizer"
             />
             <p className="leading-normal lg:text-xl md:text-lg sm:text-md ">
-              A <Mark>Kenyan youth and nursing student</Mark>
-              with a passion for social transformation. Currently serving at Torch Initiatives,
-              Mumbi is leveraging her skills to make a positive impact in communities.
+              A <Mark>Kenyan youth and nursing student</Mark> with a passion for social 
+              transformation. Currently serving at Torch Initiatives, Mumbi is leveraging her 
+              skills to make a positive impact in her community. She is dedicated to empowering 
+              others and fostering a spirit of unity and cooperation.
             </p>
           </div>
         </div>
         <div className="lg:col-span-1 xl:col-auto">
-          <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
+          <div className="flex flex-col justify-center w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <Avatar
               image={userOneImg}
               name="Phanuel Mathenge"
@@ -69,7 +70,7 @@ export const Team= () => {
           </div>
         </div>
         <div className="lg:col-span-1 xl:col-auto">
-          <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
+          <div className="flex flex-col justify-center w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <Avatar
               image={userThreeImg}
               name="Gitura Mwaura"
