@@ -31,10 +31,16 @@ export function Footer() {
                   alt="N"
                   width={32}
                   height={32}
-                  className="w-48"
+                  className="w-32"
                   unoptimized={true}
                 />
+                <div className="flex flex-col">
+                    <span className="text-lg lg:inline-block">Torch</span>
+                    <span className="text-lg" style={{marginTop:'-10px'}}>Initiatives</span>
+                    <span className="text-sm"style={{lineHeight:'0.75rem'}}>Empowering the community</span>
+                    </div>
               </Link>
+              
               
             </div>
 

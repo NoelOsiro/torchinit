@@ -22,16 +22,14 @@ export default function BlogPage({ params }: BlogPageProps) {
     return (
         <>
             <div 
-                className='w-full h-96 relative flex items-center justify-center' 
+                className='w-full h-[1200px] relative flex items-center justify-center' 
                 style={{ 
                     backgroundImage: `url(${blog.images[0].src})`, 
                     backgroundSize: 'cover',
-                    backgroundPosition: 'center'
+                    backgroundPosition: 'center',
                 }}
             >
-                <h1 className='text-white font-bold text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl uppercase'>
-                    {blog.title}
-                </h1>
+                
             </div>
             <Container>
                 <SectionTitle

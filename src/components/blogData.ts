@@ -1,4 +1,4 @@
-import img1 from '../../public/img/plant3.jpeg'; // replace with your image paths
+import img1 from '../../public/img/plant5.jpeg'; // replace with your image paths
 import img2 from '../../public/img/plant4.jpeg';
 import img3 from '../../public/img/plant2.png';
 
