@@ -22,11 +22,9 @@ export default function BlogPage({ params }: BlogPageProps) {
     return (
         <>
             <div 
-                className='w-full h-[1200px] relative flex items-center justify-center' 
+                className='w-full h-[1200px] relative flex items-center justify-center dark:bg-[#171717] bg-contain bg-center bg-no-repeat' 
                 style={{ 
                     backgroundImage: `url(${blog.images[0].src})`, 
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
                 }}
             >
                 

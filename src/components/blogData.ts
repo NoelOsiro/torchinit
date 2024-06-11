@@ -1,6 +1,9 @@
 import img1 from '../../public/img/plant5.jpeg'; // replace with your image paths
 import img2 from '../../public/img/plant4.jpeg';
 import img3 from '../../public/img/plant2.png';
+import img4 from '../../public/img/brochure.jpeg';
+import img5 from '../../public/img/banana.jpeg';
+import img6 from '../../public/img/plant6.jpeg';
 
 const blogData = [
   {
@@ -19,6 +22,21 @@ const blogData = [
     ],
   },
   // Add more blog posts as needed
+  {
+    slug: 'plant-based-diets',
+    title: 'Advocating for Plant-Based Diets in Africa',
+    images: [
+      img4,
+      img5,
+      img3,
+    ],
+    contents: [
+      'Our mission is to promote a healthy, eco-friendly eating lifestyle, recognizing its pivotal role in individual well-being and environmental sustainability.',
+      'Torch Initiatives advocates for plant-based diets for food security, health, and ethics in Africa. We believe that a plant-based diet is a sustainable solution to the challenges of food security, health, and environmental degradation. Our goal is to raise awareness of the benefits of plant-based diets and encourage individuals and communities to adopt this lifestyle for a healthier, more sustainable future.',
+      'We work with schools, communities, and organizations to promote plant-based diets through education, awareness campaigns, and advocacy. Our programs aim to empower individuals to make informed dietary choices that benefit their health, the environment, and animals. By promoting plant-based diets, we are contributing to a more sustainable and compassionate world.',
+      'Join us in advocating for plant-based diets in Africa and be part of the movement towards a healthier, more sustainable future for all.',
+    ],
+  }
 ];
 
 export default blogData;

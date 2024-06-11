@@ -13,6 +13,7 @@ export default function Contact() {
         Please fill out the form below and we will get back to you as soon as possible.
       </SectionTitle>
       <ContactForm />
+      <Cta/>
     </Container>
   );
 }

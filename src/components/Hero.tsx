@@ -41,7 +41,7 @@ export const Hero = () => {
               recognizing its pivotal role in individual well-being and environmental
               sustainability. We believe that mindful dietary choices contribute to a
               collective effort towards a healthier planet.`}
-              link="/programs"
+              link="/blog/plant-based-diets"
               imgSrc={heroImg}
             />
           </Slider>
