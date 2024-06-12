@@ -15,7 +15,7 @@ export default function Programs() {
 
       <SectionTitle
         preTitle="Testimonials"
-        title="What they say abouyt us"
+        title="What they say abouy Torch Initiatives Us"
       >
         Testimonials is a great way to increase commuinty awareness. Use this section to highlight your support and comments
       </SectionTitle>
