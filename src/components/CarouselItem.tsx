@@ -19,7 +19,7 @@ const CarouselItem = ({ header, paragraph, link, imgSrc }: CarouselItemProps) =>
         <a
           href={link}
           rel="noopener"
-          className="px-8 py-4 text-lg font-medium text-center text-white bg-indigo-600 rounded-md ">
+          className="px-8 py-4 text-lg font-medium text-center text-white bg-green-600 rounded-md ">
           Learn More
         </a>
       </div>

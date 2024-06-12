@@ -62,7 +62,7 @@ export const Navbar = () => {
 
                 <Disclosure.Button
                   aria-label="Toggle Menu"
-                  className="px-2 py-1 ml-auto text-gray-500 rounded-md lg:hidden hover:text-green-500 focus:text-green-500 focus:bg-indigo-100 focus:outline-none dark:text-gray-300 dark:focus:bg-trueGray-700">
+                  className="px-2 py-1 ml-auto text-gray-500 rounded-md lg:hidden hover:text-green-500 focus:text-green-500 focus:bg-green-100 focus:outline-none dark:text-gray-300 dark:focus:bg-trueGray-700">
                   <svg
                     className="w-6 h-6 fill-current"
                     xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +90,7 @@ export const Navbar = () => {
                         <Disclosure as="div" className="relative" key={index}>
                           {({ open }) => (
                             <>
-                              <Disclosure.Button className="flex items-center inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-green-500 focus:text-green-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800">
+                              <Disclosure.Button className="flex items-center inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-green-500 focus:text-green-500 focus:bg-green-100 focus:outline-none dark:focus:bg-gray-800">
                                 {item.name}
                                 <ChevronDownIcon
                                   className={`${open ? "transform rotate-180" : ""
@@ -99,7 +99,7 @@ export const Navbar = () => {
                               </Disclosure.Button>
                               <Disclosure.Panel className="absolute left-0 mt-2 w-48 text-gray-500 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg">
                                 {item.items && item.items.map((subItem, subIndex) => (
-                                  <Link key={subIndex} href={subItem.url} className="flex items-center inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-green-500 focus:text-green-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800">
+                                  <Link key={subIndex} href={subItem.url} className="flex items-center inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-green-500 focus:text-green-500 focus:bg-green-100 focus:outline-none dark:focus:bg-gray-800">
                                     {subItem.name}
                                   </Link>
                                 ))}
@@ -108,7 +108,7 @@ export const Navbar = () => {
                           )}
                         </Disclosure>
                       ) : (
-                        <Disclosure as="div" className="relative flex items-center inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-green-500 focus:text-green-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800" key={index}>
+                        <Disclosure as="div" className="relative flex items-center inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-green-500 focus:text-green-500 focus:bg-green-100 focus:outline-none dark:focus:bg-gray-800" key={index}>
                           <Link key={index} href={item.url} className=" w-full">
                             {item.name}
                           </Link>
@@ -131,7 +131,7 @@ export const Navbar = () => {
                 <Disclosure as="div" className="relative" key={index}>
                   {({ open }) => (
                     <>
-                      <Disclosure.Button className="flex items-center inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-green-500 focus:text-green-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800">
+                      <Disclosure.Button className="flex items-center inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-green-500 focus:text-green-500 focus:bg-green-100 focus:outline-none dark:focus:bg-gray-800">
                         {item.name}
                         <ChevronDownIcon
                           className={`${open ? "transform rotate-180" : ""
@@ -150,7 +150,7 @@ export const Navbar = () => {
                 </Disclosure>
               ) : (
                 <li className="mr-3 nav__item" key={index}>
-                  <Link key={index} href={item.url} className="inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-500 focus:text-green-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800">
+                  <Link key={index} href={item.url} className="inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-500 focus:text-green-500 focus:bg-green-100 focus:outline-none dark:focus:bg-gray-800">
                     {item.name}
                   </Link>
                 </li>

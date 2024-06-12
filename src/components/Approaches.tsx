@@ -54,7 +54,7 @@ const Approach = ({ imgSrc, title, tag, description, buttonText, imgPos = "left"
                 <span className="text-xs uppercase dark:text-gray-400">{tag}</span>
                 <h3 className="text-3xl font-bold dark:text-green-400">{title}</h3>
                 <p className="my-6 dark:text-gray-400">{description}</p>
-                <button type="button" className="self-start px-4 py-2 text-md font-medium text-center text-white bg-indigo-600 rounded-md">{buttonText}</button>
+                <button type="button" className="self-start px-4 py-2 text-md font-medium text-center text-white bg-green-600 rounded-md">{buttonText}</button>
             </div>
         </div>
     );
