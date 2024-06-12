@@ -12,6 +12,7 @@ type NavigationItem = {
 };
 
 const navigation: NavigationItem[] = [
+  { name: "Home", url: "/" },
   {
     name: "About",
     url: "/about",
