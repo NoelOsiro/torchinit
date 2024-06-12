@@ -50,9 +50,9 @@ export const Navbar = () => {
                       />
                     </span>
                     <div className="flex flex-col">
-                    <span className="text-lg lg:inline-block text">Torch</span>
-                    <span className="text-lg" style={{marginTop:'-10px'}}>Initiatives</span>
-                    <span className="text-sm text-indigo-600"style={{lineHeight:'0.25rem'}}>Empowering the community</span>
+                    <span className="text-lg lg:inline-block text-black">Torch</span>
+                    <span className="text-lg text-black" style={{marginTop:'-10px'}}>Initiatives</span>
+                    <span className="text-sm text-green-600"style={{lineHeight:'0.25rem'}}>Empowering the community</span>
                     </div>
                     
                   </span>
