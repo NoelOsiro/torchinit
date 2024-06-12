@@ -17,7 +17,7 @@ export const Team= () => {
             <Avatar
               image={userTwoImg}
               name="Virginia Ruguru"
-              title="Founder and Team Leader of Torch Initiatives."
+              title="Founder and Team Lead of Torch Initiatives."
             />
             <p className="leading-normal lg:text-xl md:text-lg sm:text-md">
               A passionate <Mark>advocate for sustainable living</Mark>
