@@ -15,10 +15,9 @@ export default function Programs() {
 
       <SectionTitle
         preTitle="Testimonials"
-        title="Here's what our they say"
+        title="What they say abouyt us"
       >
-        Testimonials is a great way to increase the brand trust and awareness.
-        Use this section to highlight your popular values.
+        Testimonials is a great way to increase commuinty awareness. Use this section to highlight your support and comments
       </SectionTitle>
 
       <Testimonials />
