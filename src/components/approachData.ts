@@ -2,7 +2,7 @@ import { ApproachProps } from "./Approaches";
 
 export const approaches: ApproachProps[] = [
   {
-    imgSrc: '/img/empower2.jpeg',
+    imgSrc: '/img/empower2.jpg',
     title: 'Empowering youth',
     description: 'We aim to equip young people with positive attitudes and 21st-century employability skills, preparing them to succeed in a rapidly changing world. Our targeted programs develop the mindset and skills needed to navigate modern workforce challenges, fostering confident and adaptable individuals ready for success.',
     buttonText: 'Follow',

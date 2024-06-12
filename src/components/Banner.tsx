@@ -3,7 +3,7 @@ const Banner = () => {
         <div className="bg-green-600">
             <div className="max-w-screen-xl mx-auto px-4 py-3 text-white sm:text-center md:px-8">
                 <p className="font-medium">
-                    Africa Vegan Restaurant Week campaign.<br />
+                    <strong>Africa Vegan Restaurant Week campaign.</strong><br />
                     2ND TO 7TH SEPTEMBER 2024<br/>
                     <a href="/blog/vegan-restaurant-week" className="font-semibold underline duration-150 hover:text-indigo-100 inline-flex items-center gap-x-1">
                         Learn more
