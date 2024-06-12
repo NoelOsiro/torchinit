@@ -1,9 +1,9 @@
 const Banner = () => {
     return (
-        <div className="bg-indigo-600">
+        <div className="bg-green-600">
             <div className="max-w-screen-xl mx-auto px-4 py-3 text-white sm:text-center md:px-8">
                 <p className="font-medium">
-                    TORCH INIITIATIVES CBO Supporting the Africa Vegan Restaurant Week campaign.<br />
+                    Africa Vegan Restaurant Week campaign.<br />
                     2ND TO 7TH SEPTEMBER 2024<br/>
                     <a href="/blog/vegan-restaurant-week" className="font-semibold underline duration-150 hover:text-indigo-100 inline-flex items-center gap-x-1">
                         Learn more
