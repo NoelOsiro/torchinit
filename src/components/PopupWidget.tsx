@@ -308,7 +308,7 @@ export function PopupWidget() {
                       </h3>
                       <p className="text-gray-700 md:px-3">{Message}</p>
                       <button
-                        className="mt-6 text-indigo-600 focus:outline-none"
+                        className="mt-6 text-green-600 focus:outline-none"
                         onClick={() => reset()}
                       >
                         Go back
@@ -338,7 +338,7 @@ export function PopupWidget() {
                       </h3>
                       <p className="text-gray-700 md:px-3">{Message}</p>
                       <button
-                        className="mt-6 text-indigo-600 focus:outline-none"
+                        className="mt-6 text-green-600 focus:outline-none"
                         onClick={() => reset()}
                       >
                         Go back

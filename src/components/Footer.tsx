@@ -35,8 +35,8 @@ export function Footer() {
                   unoptimized={true}
                 />
                 <div className="flex flex-col">
-                    <span className="text-lg lg:inline-block text-black">Torch</span>
-                    <span className="text-lg" style={{marginTop:'-10px'}}>Initiatives</span>
+                    <span className="text-lg lg:inline-block text-black dark:text-gray-400">Torch</span>
+                    <span className="text-lg text-black dark:text-gray-400" style={{marginTop:'-10px'}}>Initiatives</span>
                     <span className="text-sm text-green-600"style={{lineHeight:'0.75rem'}}>Empowering the community</span>
                     </div>
               </Link>

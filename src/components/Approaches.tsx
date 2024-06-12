@@ -52,7 +52,7 @@ const Approach = ({ imgSrc, title, tag, description, buttonText, imgPos = "left"
                 className="h-96 w-3/5 dark:bg-gray-500 aspect-video" />
             <div className="flex flex-col justify-center flex-1 p-8">
                 <span className="text-xs uppercase dark:text-gray-400">{tag}</span>
-                <h3 className="text-3xl font-bold dark:text-indigo-400">{title}</h3>
+                <h3 className="text-3xl font-bold dark:text-green-400">{title}</h3>
                 <p className="my-6 dark:text-gray-400">{description}</p>
                 <button type="button" className="self-start px-4 py-2 text-md font-medium text-center text-white bg-indigo-600 rounded-md">{buttonText}</button>
             </div>
