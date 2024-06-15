@@ -53,7 +53,7 @@ const Approach = ({ imgSrc, title, tag, description, caption, buttonText, imgPos
                     src={imgSrc}
                     alt={title}
                     className="object-cover rounded-lg" />
-                <figcaption className="absolute bottom-4 w-full text-center mt-2 text-lg text-white font-bold transition-transform duration-500 hover:scale-110">{caption}</figcaption>
+                <figcaption className="absolute bottom-4 w-full text-center text-md text-white font-bold transition-transform duration-500 hover:scale-110 hover:text-green-400">{caption}</figcaption>
             </figure>
             <div className="flex flex-col justify-center flex-1 p-8">
                 <span className="text-xs uppercase dark:text-gray-400">{tag}</span>
