@@ -2,8 +2,9 @@
 import Link from "next/link";
 import ThemeChanger from "./DarkSwitch";
 import Image from "next/image"
-import { Disclosure } from "@headlessui/react";
+import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/react";
 import ChevronDownIcon from "@heroicons/react/24/solid/ChevronDownIcon";
+import { useState } from "react";
 
 type NavigationItem = {
   name: string;
@@ -26,6 +27,7 @@ const navigation: NavigationItem[] = [
   { name: "Our Community", url: "/blog" }
 ];
 export const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
 
   return (
@@ -50,17 +52,17 @@ export const Navbar = () => {
                       />
                     </span>
                     <div className="flex flex-col">
-                    <span className="text-lg lg:inline-block text-black">Torch</span>
-                    <span className="text-lg text-black" style={{marginTop:'-10px'}}>Initiatives</span>
-                    <span className="text-sm text-green-600"style={{lineHeight:'0.25rem'}}>Empowering the community</span>
+                      <span className="text-lg lg:inline-block text-black">Torch</span>
+                      <span className="text-lg text-black" style={{ marginTop: '-10px' }}>Initiatives</span>
+                      <span className="text-sm text-green-600" style={{ lineHeight: '0.25rem' }}>Empowering the community</span>
                     </div>
-                    
+
                   </span>
                   <div>
                   </div>
                 </Link>
 
-                <Disclosure.Button
+                <DisclosureButton
                   aria-label="Toggle Menu"
                   className="px-2 py-1 ml-auto text-gray-500 rounded-md lg:hidden hover:text-green-500 focus:text-green-500 focus:bg-green-100 focus:outline-none dark:text-gray-300 dark:focus:bg-trueGray-700">
                   <svg
@@ -81,29 +83,29 @@ export const Navbar = () => {
                       />
                     )}
                   </svg>
-                </Disclosure.Button>
+                </DisclosureButton>
 
-                <Disclosure.Panel className="flex list-none flex-col flex-wrap w-full my-5 lg:hidden">
+                <DisclosurePanel className="flex list-none flex-col flex-wrap w-full my-5 lg:hidden">
                   <>
                     {navigation.map((item, index) => (
                       item.items ? (
                         <Disclosure as="div" className="relative" key={index}>
                           {({ open }) => (
                             <>
-                              <Disclosure.Button className="flex items-center inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-green-500 focus:text-green-500 focus:bg-green-100 focus:outline-none dark:focus:bg-gray-800">
+                              <DisclosureButton className="flex items-center inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-green-500 focus:text-green-500 focus:bg-green-100 focus:outline-none dark:focus:bg-gray-800">
                                 {item.name}
                                 <ChevronDownIcon
                                   className={`${open ? "transform rotate-180" : ""
                                     } w-5 h-5 ml-2`}
                                 />
-                              </Disclosure.Button>
-                              <Disclosure.Panel className="absolute left-0 mt-2 w-48 text-gray-500 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg">
+                              </DisclosureButton>
+                              <DisclosurePanel className="absolute left-0 mt-2 w-48 text-gray-500 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg">
                                 {item.items && item.items.map((subItem, subIndex) => (
                                   <Link key={subIndex} href={subItem.url} className="flex items-center inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-green-500 focus:text-green-500 focus:bg-green-100 focus:outline-none dark:focus:bg-gray-800">
                                     {subItem.name}
                                   </Link>
                                 ))}
-                              </Disclosure.Panel>
+                              </DisclosurePanel>
                             </>
                           )}
                         </Disclosure>
@@ -117,7 +119,7 @@ export const Navbar = () => {
                     ))}
 
                   </>
-                </Disclosure.Panel>
+                </DisclosurePanel>
               </div>
             </>
           )}
@@ -128,23 +130,30 @@ export const Navbar = () => {
           <ul className="items-center justify-end flex-1 pt-6 list-none lg:pt-0 lg:flex">
             {navigation.map((item, index) => (
               item.items ? (
-                <Disclosure as="div" className="relative" key={index}>
+                <Disclosure as="div" className="relative" key={index} >
                   {({ open }) => (
                     <>
-                      <Disclosure.Button className="flex items-center inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-green-500 focus:text-green-500 focus:bg-green-100 focus:outline-none dark:focus:bg-gray-800">
+                      <DisclosureButton 
+                      onClick={() => setIsOpen(false)}
+                      className="flex items-center inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-green-500 focus:text-green-500 focus:bg-green-100 focus:outline-none dark:focus:bg-gray-800">
                         {item.name}
                         <ChevronDownIcon
                           className={`${open ? "transform rotate-180" : ""
                             } w-5 h-5 ml-2`}
                         />
-                      </Disclosure.Button>
-                      <Disclosure.Panel className="absolute left-0 mt-2 w-48 text-gray-500 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg">
+                      </DisclosureButton>
+                      <DisclosurePanel className="absolute left-0 mt-2 w-48 text-gray-500 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg">
                         {item.items && item.items.map((subItem, subIndex) => (
-                          <Link key={subIndex} href={subItem.url} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-500">
+                          <Link
+                          onClick={() => setIsOpen(false)} 
+                          key={subIndex} 
+                          href={subItem.url} 
+                          className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-500" 
+                          >
                             {subItem.name}
                           </Link>
                         ))}
-                      </Disclosure.Panel>
+                      </DisclosurePanel>
                     </>
                   )}
                 </Disclosure>

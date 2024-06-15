@@ -1,33 +1,28 @@
 import { Container } from "@/components/Container";
-import { Hero } from "@/components/Hero";
 import { SectionTitle } from "@/components/SectionTitle";
-import { Benefits } from "@/components/Benefits";
-import { Video } from "@/components/Video";
-import { Testimonials } from "@/components/Testimonials";
-import { Faq } from "@/components/Faq";
+import { Programs } from "@/components/Programs";
+
+
 import { Cta } from "@/components/Cta";
 
-import { benefitOne, benefitTwo } from "@/components/data";
-export default function Programs() {
+import { benefitOne, benefitThree, benefitTwo } from "@/components/programsData";
+export default function Program() {
   return (
     <Container>
-      <Hero />
 
       <SectionTitle
-        preTitle="Testimonials"
-        title="What they say about Torch Initiatives"
+        preTitle="Our programs"
+        title="Dedication to catalyzing transformative attitudes, and equipping individuals"
       >
-        Testimonials is a great way to increase commuinty awareness. Use this section to highlight your support and comments
+        Our programs are designed to empower individuals and communities,
+        fostering positive attitudes and aptitudes while championing community sustainability.
+        We emphasize the proper utilization of community resources, nurturing positive cultures,
+        and responsible stewardship.
       </SectionTitle>
 
-      <Testimonials />
-
-      <SectionTitle preTitle="FAQ" title="Frequently Asked Questions">
-        Answer your community possible questions here, it will increase the
-        conversion rate as well as support or chat requests.
-      </SectionTitle>
-
-      <Faq />
+      <Programs imgPos="right" data={benefitOne} />
+      <Programs data={benefitThree} />
+      <Programs imgPos="right" data={benefitTwo} />
       <Cta />
     </Container>
   );
