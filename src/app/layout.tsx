@@ -8,6 +8,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PopupWidget } from "@/components/PopupWidget";
 import Banner from "@/components/Banner";
+import Banner2 from "@/components/Banner2";
 
 
 
@@ -29,6 +30,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class">
           <Navbar />
           <Banner />
+          <Banner2 />
           
           <div>{children}</div>
           <Footer />

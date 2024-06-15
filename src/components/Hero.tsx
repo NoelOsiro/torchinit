@@ -1,7 +1,6 @@
 'use client'
 import CarouselItem from "./CarouselItem";
 import { Container } from "@/components/Container";
-import heroImg from "../../public/img/plant.png";
 import heroImg1 from "../../public/img/plant2.png";
 
 
@@ -19,17 +18,7 @@ export const Hero = () => {
               is bringing the light of veganism through this campaign.🌱🍽️🎉`}
               link="/blog/vegan-restaurant-week"
               imgSrc={heroImg1}
-            />
-            
-            {/* <CarouselItem
-              header="Advocating for plant based diets for food security, health and ethics in Africa"
-              paragraph={`Our mission is to promote a healthy, eco-friendly eating lifestyle,
-              recognizing its pivotal role in individual well-being and environmental
-              sustainability. We believe that mindful dietary choices contribute to a
-              collective effort towards a healthier planet.`}
-              link="/blog/plant-based-diets"
-              imgSrc={heroImg}
-            /> */}
+            />    
         </div>
 
       </Container>

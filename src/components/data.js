@@ -1,40 +1,40 @@
 import {
   FaceSmileIcon,
-  ChartBarSquareIcon,
-  CursorArrowRaysIcon,
-  DevicePhoneMobileIcon,
-  AdjustmentsHorizontalIcon,
-  SunIcon,
   BookOpenIcon,
   UsersIcon,
   ShoppingBagIcon,
+  HeartIcon,
+  ArrowPathIcon,
+  GlobeEuropeAfricaIcon,
 } from "@heroicons/react/24/solid";
 
-import benefitOneImg from "../../public/img/youth.jpg";
+import benefitOneImg from "../../public/img/empower4.jpeg";
 import benefitTwoImg from "../../public/img/empower.jpg";
+import benefitThreeImg from "../../public/img/plant.png";
 import { CloudIcon } from "@heroicons/react/24/solid";
 
 const benefitOne = {
-  title: "Empowering Youth",
+  title: "Plant based diets",
+  button:true,
   desc: "We focus on instilling positive attitudes and 21st-century employability skills in young people, preparing them to thrive in a rapidly evolving world.",
-  image: benefitOneImg,
+  image: benefitThreeImg,
   bullets: [
     {
-      title: "Promote Education",
-      desc: "Encourage and support the pursuit of education to empower youth with knowledge and skills.",
-      icon: <BookOpenIcon/>,
+      title: "Promote a healthy, eco-friendly eating lifestyle",
+      desc: "Our mission is to promote a healthy, eco-friendly eating lifestyle.",
+      icon: <HeartIcon />,
     },
     {
-      title: "Foster Leadership",
-      desc: "Provide opportunities for leadership roles to instill confidence and decision-making abilities.",
-      icon: <FaceSmileIcon />,
+      title: "Recognize the pivotal role in well-being and sustainability",
+      desc: "Recognizing its pivotal role in individual well-being and environmental sustainability.",
+      icon: <ArrowPathIcon />,
     },
     {
-      title: "Encourage Community Involvement",
-      desc: "Engage youth in community service to foster a sense of responsibility and belonging.",
-      icon: <UsersIcon/>,
+      title: "Mindful dietary choices for a healthier planet",
+      desc: "We believe that mindful dietary choices contribute to a collective effort towards a healthier planet.",
+      icon: <GlobeEuropeAfricaIcon />,
     },
-  ],
+],
 };
 
 const benefitTwo = {
@@ -60,5 +60,37 @@ const benefitTwo = {
   ],
 };
 
+const benefitThree = {
+  title: "Empowering Youth",
+  desc: "We focus on instilling positive attitudes and 21st-century employability skills in young people, preparing them to thrive in a rapidly evolving world.",
+  image: benefitOneImg,
+  bullets: [
+    {
+      title: "Promote Education",
+      desc: "Encourage and support the pursuit of education to empower youth with knowledge and skills.",
+      icon: <BookOpenIcon/>,
+    },
+    {
+      title: "Foster Leadership",
+      desc: "Provide opportunities for leadership roles to instill confidence and decision-making abilities.",
+      icon: <FaceSmileIcon />,
+    },
+    {
+      title: "Encourage Community Involvement",
+      desc: "Engage youth in community service to foster a sense of responsibility and belonging.",
+      icon: <UsersIcon/>,
+    },
+  ],
+};
 
-export {benefitOne, benefitTwo};
+
+export {benefitOne, benefitTwo, benefitThree};
+{/* <CarouselItem
+              header="Advocating for plant based diets for food security, health and ethics in Africa"
+              paragraph={`Our mission is to promote a healthy, eco-friendly eating lifestyle,
+              recognizing its pivotal role in individual well-being and environmental
+              sustainability. We believe that mindful dietary choices contribute to a
+              collective effort towards a healthier planet.`}
+              link="/blog/plant-based-diets"
+              imgSrc={heroImg}
+            /> */}
