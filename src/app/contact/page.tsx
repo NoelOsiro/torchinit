@@ -1,6 +1,5 @@
 import { Container } from "@/components/Container";
 import { SectionTitle } from "@/components/SectionTitle";
-import { Cta } from "@/components/Cta";
 import ContactForm from "@/components/ContactForm";
 
 export default function Contact() {
@@ -13,7 +12,6 @@ export default function Contact() {
         Please fill out the form below and we will get back to you as soon as possible.
       </SectionTitle>
       <ContactForm />
-      <Cta/>
     </Container>
   );
 }
