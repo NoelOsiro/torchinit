@@ -1,7 +1,7 @@
 const Banner = () => {
     return (
         <div className="bg-green-600">
-            <div className="max-w-screen-xl mx-auto px-4 py-3 text-white sm:text-center md:px-8">
+            <div className="max-w-screen-xl mx-auto px-4 py-3 text-white text-center md:px-8">
                 <p className="font-medium">
                     <strong>Africa Vegan Restaurant Week campaign.</strong><br />
                     2ND TO 7TH SEPTEMBER 2024<br/>

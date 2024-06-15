@@ -6,10 +6,15 @@ import { Video } from "@/components/Video";
 import { Cta } from "@/components/Cta";
 
 import { benefitOne, benefitTwo } from "@/components/data";
+import Banner from "@/components/Banner";
+import Banner2 from "@/components/Banner2";
+import Values from "@/components/Values";
 export default function Home() {
   return (
     <Container>
+      <Banner2 />
       <Hero />
+      <Values />
       <SectionTitle
         preTitle="What we do"
         title="Dedication to catalyzing transformative attitudes, and equipping individuals"
