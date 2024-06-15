@@ -5,6 +5,7 @@ import { Container }  from "@/components/Container";
 interface BenefitsProps {
   imgPos?: "left" | "right";
   data: {
+    button?: boolean;
     imgPos?: "left" | "right";
     title: string;
     desc: string;
@@ -52,13 +53,25 @@ export const Benefits = (props: Readonly<BenefitsProps>) => {
               </p>
             </div>
 
-            <div className="w-full mt-5">
+            <div className="w-full mt-5 mb-4">
               {data.bullets.map((item, index) => (
                 <Benefit key={index} title={item.title} icon={item.icon}>
                   {item.desc}
                 </Benefit>
+                
               ))}
+              
             </div>
+            {props.data.button && (
+              <div className="flex flex-col items-start space-y-3 sm:space-x-4 sm:space-y-0 sm:items-center sm:flex-row mt-4">
+              <a
+                href='/blog/plant-based-diet'
+                rel="noopener"
+                className="px-4 py-4 lg:px-8 lg:py-4 text-md lg:text-lg font-medium text-center text-white bg-green-600 rounded-md ">
+                Learn More
+              </a>
+            </div>
+            )}
           </div>
         </div>
       </Container>

@@ -4,10 +4,7 @@ import { SectionTitle } from "@/components/SectionTitle";
 import { Benefits } from "@/components/Benefits";
 import { Video } from "@/components/Video";
 import { Cta } from "@/components/Cta";
-
 import { benefitOne, benefitThree, benefitTwo } from "@/components/data";
-import Banner from "@/components/Banner";
-import Banner2 from "@/components/Banner2";
 import Values from "@/components/Values";
 export default function Home() {
   return (
