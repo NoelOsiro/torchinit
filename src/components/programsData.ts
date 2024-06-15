@@ -9,9 +9,9 @@ import {
     CloudIcon,
 } from "@heroicons/react/24/solid";
 
-import benefitOneImg from "../../public/img/empower4.jpeg";
-import benefitTwoImg from "../../public/img/empower.jpg";
-import benefitThreeImg from "../../public/img/plant.png";
+import benefitOneImg from "../../public/img/empower5.jpeg";
+import benefitTwoImg from "../../public/img/resource.jpeg";
+import benefitThreeImg from "../../public/img/planted.jpeg";
 import { StaticImageData } from "next/image";
 
 import { ForwardRefExoticComponent, RefAttributes, SVGProps } from 'react';

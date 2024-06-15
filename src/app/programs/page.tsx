@@ -21,8 +21,9 @@ export default function Program() {
       </SectionTitle>
 
       <Programs imgPos="right" data={benefitOne} />
-      <Programs data={benefitThree} />
-      <Programs imgPos="right" data={benefitTwo} />
+      <Programs data={benefitTwo} />
+      <Programs imgPos="right" data={benefitThree} />
+      
       <Cta />
     </Container>
   );
