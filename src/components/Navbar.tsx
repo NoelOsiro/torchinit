@@ -24,7 +24,7 @@ const navigation: NavigationItem[] = [
   },
   { name: "Programs", url: "/programs" },
   { name: "Contact Us", url: "/contact" },
-  { name: "Our Community", url: "/blog" }
+  { name: "Our Community", url: "/community" }
 ];
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
