@@ -40,7 +40,7 @@ const faqdata = [
     answer: "Torch Initiatives is dedicated to catalyzing transformative attitudes, equipping individuals for a brighter future. Through dynamic initiatives, we nurture lasting empowerment and sustainability, resonating through generations in our inspired communities.",
   },
   {
-    question: "Our vision",
+    question: "Our Vision",
     answer: "At Torch Initiatives, we envision a future where empowered generations cultivate a transformative mindset, fostering resilient communities that thrive in sustainability, compassion, and positive change",
   },
   {
