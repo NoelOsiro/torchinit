@@ -70,7 +70,7 @@ export function Footer() {
             <div>Follow us</div>
             <div className="flex mt-5 space-x-5 text-gray-400 dark:text-gray-500">
               <a
-                href="https://twitter.com/torchinitiative"
+                href="https://x.com/torchCBO?t=ucDcWW_L1IKMXJR5b6yCew&s=09"
                 target="_blank"
                 rel="noopener"
               >
@@ -78,25 +78,17 @@ export function Footer() {
                 <Twitter />
               </a>
               <a
-                href="https://facebook.com/torchinitiative"
+                href="https://www.facebook.com/Torch2024"
                 target="_blank"
                 rel="noopener"
               >
                 <span className="sr-only">Facebook</span>
                 <Facebook />
               </a>
-              <a
-                href="https://instagram.com/torchinitiative"
-                target="_blank"
-                rel="noopener"
-              >
-                <span className="sr-only">Instagram</span>
-                <Instagram />
-              </a>
-              <a href="https://linkedin.com/torchinitiative" target="_blank" rel="noopener">
+              {/* <a href="https://linkedin.com/torchinitiative" target="_blank" rel="noopener">
                 <span className="sr-only">Linkedin</span>
                 <Linkedin />
-              </a>
+              </a> */}
             </div>
           </div>
         </div>
