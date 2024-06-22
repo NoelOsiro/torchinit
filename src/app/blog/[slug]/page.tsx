@@ -39,7 +39,7 @@ export default function BlogPage({ params }: BlogPageProps) {
     return (
         <>
             <div
-                className='w-full h-[1200px] relative flex items-center justify-center dark:bg-[#171717] bg-contain bg-center bg-no-repeat'
+                className='w-full h-[600px] mt-6 rounded-lg relative flex items-center justify-center dark:bg-[#171717] bg-contain bg-center bg-no-repeat'
                 style={{
                     backgroundImage: `url(${blog.images[0].src})`,
                 }}
@@ -48,7 +48,7 @@ export default function BlogPage({ params }: BlogPageProps) {
             </div>
             <Container>
                 <SectionTitle
-                    preTitle="What's Cooking"
+                    preTitle="Our Story"
                     title={blog.contents[0]}
                 >
                 </SectionTitle>
