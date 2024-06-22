@@ -12,6 +12,7 @@ import benefitOneImg from "../../public/img/empower4.jpeg";
 import benefitTwoImg from "../../public/img/empower.jpg";
 import benefitThreeImg from "../../public/img/plant.png";
 import { CloudIcon } from "@heroicons/react/24/solid";
+import { Flower2Icon, HandCoinsIcon, HeartHandshakeIcon, LeafIcon, RecycleIcon, SproutIcon } from "lucide-react";
 
 const benefitOne = {
   title: "Plant based diets",
@@ -22,17 +23,17 @@ const benefitOne = {
     {
       title: "Promote a healthy, eco-friendly eating lifestyle",
       desc: "Our mission is to promote a healthy, eco-friendly eating lifestyle.",
-      icon: <HeartIcon />,
+      icon: <SproutIcon />,
     },
     {
       title: "Recognize the pivotal role in well-being and sustainability",
       desc: "Recognizing its pivotal role in individual well-being and environmental sustainability.",
-      icon: <ArrowPathIcon />,
+      icon: <LeafIcon />,
     },
     {
       title: "Mindful dietary choices for a healthier planet",
       desc: "We believe that mindful dietary choices contribute to a collective effort towards a healthier planet.",
-      icon: <GlobeEuropeAfricaIcon />,
+      icon: <Flower2Icon />,
     },
 ],
 };
@@ -45,12 +46,12 @@ const benefitTwo = {
     {
       title: "Promote Green Living",
       desc: "Encourage the adoption of eco-friendly practices and sustainable living.",
-      icon: <CloudIcon />,
+      icon: <RecycleIcon />,
     },
     {
       title: "Support Local Economies",
       desc: "Promote local businesses and farmers to boost the local economy and reduce carbon footprint.",
-      icon: <ShoppingBagIcon/>,
+      icon: <HandCoinsIcon/>,
     },
     {
       title: "Encourage Community Participation",
@@ -73,7 +74,7 @@ const benefitThree = {
     {
       title: "Foster Leadership",
       desc: "Provide opportunities for leadership roles to instill confidence and decision-making abilities.",
-      icon: <FaceSmileIcon />,
+      icon: <HeartHandshakeIcon />,
     },
     {
       title: "Encourage Community Involvement",
