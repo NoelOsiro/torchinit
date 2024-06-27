@@ -2,8 +2,6 @@ import { Container } from "@/components/Container";
 import { SectionTitle } from "@/components/SectionTitle";
 import { Faq } from "@/components/Faq";
 import { Cta } from "@/components/Cta";
-
-import { benefitOne, benefitTwo } from "@/components/data";
 import { Team } from "@/components/Team";
 export default function Programs() {
   return (

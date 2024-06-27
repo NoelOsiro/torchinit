@@ -16,7 +16,7 @@ export default function Programs() {
       community sustainability. We emphasize the proper utilization of community 
       resources, nurturing positive cultures, and responsible stewardship.
       </SectionTitle>
-      <Approaches approaches={approaches}/>
+      <Approaches/>
       <Cta />
     </Container>
   );

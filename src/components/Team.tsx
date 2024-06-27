@@ -7,8 +7,22 @@ import userTwoImg from "../../public/img/user2.jpeg";
 import userThreeImg from "../../public/img/user3.jpeg";
 import userFourImg from "../../public/img/user4.jpeg";
 import userFiveImg from "../../public/img/user5.jpeg";
+import { createClient } from "@/utils/supabase/server";
+import Spinner from "./Spinner";
 
-export const Team= () => {
+export const Team= async () => {
+  const supabase = createClient();
+    const { data: teams, error } = await supabase
+        .from('Team')
+        .select('*')
+        .order('id', { ascending: true });
+    if (!teams) {
+        return (
+            <Container className="flex flex-col justify-between items-center lg:flex-row lg:items-start">
+                <Spinner />
+            </Container>
+        )
+    }
   return (
     <Container>
       <div className="grid gap-10 lg:grid-cols-2 xl:grid-cols-3">
@@ -16,13 +30,11 @@ export const Team= () => {
           <div className="flex flex-col justify-center w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <Avatar
               image={userTwoImg}
-              name="Virginia Ruguru"
-              title="Founder and Team Lead of Torch Initiatives."
+              name={teams[0].name}
+              title={teams[0].title}
             />
             <p className="leading-normal lg:text-xl md:text-lg sm:text-md">
-              A passionate <Mark>advocate for sustainable living</Mark>
-              and holistic well-being. Her visionary leadership and commitment to transformative
-              impact guide our team towards a brighter, more compassionate future.
+              {teams[0].description}
             </p>
           </div>
         </div>
@@ -30,11 +42,11 @@ export const Team= () => {
           <div className="flex flex-col justify-center w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <Avatar
               image={userFiveImg} // replace with Mary Njeri's image
-              name="Mary Njeri"
-              title="Project Assistant"
+              name={teams[1].name}
+              title={teams[1].title}
             />
             <p className="leading-normal lg:text-xl md:text-lg sm:text-md ">
-              A graduate in Biotechnology, Mary plays a crucial role at Torch Initiatives, advocating for plant-based diets and sustainable agricultural practices. She is dedicated to promoting health and sustainability through innovative projects and community engagement.
+              {teams[1].description}
             </p>
           </div>
         </div>
@@ -42,14 +54,11 @@ export const Team= () => {
           <div className="flex flex-col justify-center w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <Avatar
               image={userFourImg} // replace with Mumbi Gladys's image
-              name="Mumbi Gladys"
-              title="Intern and Youth Mobilizer"
+              name={teams[2].name}
+              title={teams[2].title}
             />
             <p className="leading-normal lg:text-xl md:text-lg sm:text-md ">
-              A <Mark>Kenyan youth and nursing student</Mark> with a passion for social 
-              transformation. Currently serving at Torch Initiatives, Mumbi is leveraging her 
-              skills to make a positive impact in her community. She is dedicated to empowering 
-              others and fostering a spirit of unity and cooperation.
+              {teams[2].description}
             </p>
           </div>
         </div>
@@ -57,15 +66,11 @@ export const Team= () => {
           <div className="flex flex-col justify-center w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <Avatar
               image={userOneImg}
-              name="Phanuel Mathenge"
-              title="Head of Logistics"
+              name={teams[3].name}
+              title={teams[3].title}
             />
             <p className="leading-normal lg:text-xl md:text-lg sm:text-md ">
-              The driving  <Mark>logistical operations</Mark>
-              at Torch Initiatives. Phanuel, as the Logistics Lead at Torch Initiatives,
-              brings extensive experience in optimizing supply chain activities and ensuring
-              seamless coordination for our initiatives. His dedication to efficiency and precision
-              is crucial in executing our projects effectively.
+              {teams[3].description}
             </p>
           </div>
         </div>
@@ -73,15 +78,11 @@ export const Team= () => {
           <div className="flex flex-col justify-center w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <Avatar
               image={userThreeImg}
-              name="Gitura Mwaura"
-              title="Communications Consultant"
+              name={teams[4].name}
+              title={teams[4].title}
             />
             <p className="leading-normal lg:text-xl md:text-lg sm:text-md ">
-              A <Mark>seasoned author and journalist</Mark>
-              with a rich background in community development.
-              His expertise in impact assessment, reporting, and documentary production,
-              coupled with his dedication to effective communication, significantly contributes
-              to our mission at Torch Initiatives.
+              {teams[4].description}
             </p>
           </div>
         </div>

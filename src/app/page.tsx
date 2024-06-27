@@ -1,10 +1,8 @@
 import { Container } from "@/components/Container";
 import { Hero } from "@/components/Hero";
 import { SectionTitle } from "@/components/SectionTitle";
-
 import { Video } from "@/components/Video";
 import { Cta } from "@/components/Cta";
-import { benefitOne, benefitThree, benefitTwo } from "@/components/data";
 import Values from "@/components/Values";
 import BenefitsSection from "@/components/BenefitsSection";
 export default function Home() {

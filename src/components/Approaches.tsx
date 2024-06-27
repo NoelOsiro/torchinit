@@ -1,6 +1,9 @@
 import Image from "next/image";
 import React from "react";
 import { Container } from "@/components/Container";
+import { createClient } from "@/utils/supabase/server";
+import { PostgrestError } from "@supabase/supabase-js";
+import Spinner from "./Spinner";
 
 export interface ApproachProps {
     imgSrc: string;
@@ -17,8 +20,19 @@ interface ApproachesProps {
     approaches: ApproachProps[]
 }
 
-export const Approaches = (props: ApproachesProps) => {
-    const { approaches } = props
+export const Approaches = async () => {
+    const supabase = createClient();
+    const { data: approaches, error }: { data: ApproachProps[] | null, error: PostgrestError | null } = await supabase
+        .from('Approaches')
+        .select('*')
+        .order('id', { ascending: true });
+    if (!approaches) {
+        return (
+            <Container className="flex flex-col justify-between items-center lg:flex-row lg:items-start">
+                <Spinner />
+            </Container>
+        )
+    }
 
     return (
         <Container className="lg:p-8  dark:text-gray-800 ">
