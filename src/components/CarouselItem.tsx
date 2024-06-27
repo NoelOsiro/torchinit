@@ -32,7 +32,6 @@ const CarouselItem = ({ header, paragraph, link, imgSrc }: CarouselItemProps) =>
         className="object-cover w-full h-full rounded-md"
         alt="Hero Illustration"
         loading="eager"
-        placeholder="blur"
         style={{ objectFit: 'cover' }}
       />
     </div>
