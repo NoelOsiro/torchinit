@@ -12,6 +12,11 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
+                hostname: 'demo.themesberg.com',
+                port: '',
+            },
+            {
+                protocol: 'https',
                 hostname: 'i.ibb.co',
                 port: '',
             },

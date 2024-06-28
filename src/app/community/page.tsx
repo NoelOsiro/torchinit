@@ -1,13 +1,19 @@
 import { Container } from "@/components/Container";
 import { SectionTitle } from "@/components/SectionTitle";
-
-
+import { Navbar } from "@/components/Navbar";
+import Banner from "@/components/Banner";
+import Banner2 from "@/components/Banner2";
 import { Cta } from "@/components/Cta";
 import { ArticleCard } from "@/components/ArticleCard";
+import { Footer } from "@/components/Footer";
 
 export default function Program() {
   return (
-    <Container>
+    <>
+      <Navbar />
+      <Banner />
+      <Banner2 />
+      <Container>
       <SectionTitle
         preTitle="Torch Initiatives Community"
         title="Our community is our pride"
@@ -89,9 +95,10 @@ export default function Program() {
           </div>
         </div>
       </div>
-
       <Cta />
     </Container>
+    <Footer />
+    </>
   );
 }
 

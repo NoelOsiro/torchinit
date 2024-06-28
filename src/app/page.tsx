@@ -5,9 +5,17 @@ import { Video } from "@/components/Video";
 import { Cta } from "@/components/Cta";
 import Values from "@/components/Values";
 import BenefitsSection from "@/components/BenefitsSection";
+import { Navbar } from "@/components/Navbar";
+import Banner from "@/components/Banner";
+import Banner2 from "@/components/Banner2";
+import { Footer } from "@/components/Footer";
 export default function Home() {
   return (
-    <Container>
+    <>
+      <Navbar />
+      <Banner />
+      <Banner2 />
+      <Container>
       <Hero />
       <Values />
       <BenefitsSection/>
@@ -25,5 +33,7 @@ export default function Home() {
       <Video videoId="hTALjJHKW4g" previewImageUrl="/img/logo.png" />
       <Cta />
     </Container>
+    <Footer />
+    </>
   );
 }

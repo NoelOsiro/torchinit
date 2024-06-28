@@ -14,10 +14,6 @@ export interface ApproachProps {
     imgPos?: "left" | "right";
     caption: string;
 
-};
-
-interface ApproachesProps {
-    approaches: ApproachProps[]
 }
 
 export const Approaches = async () => {
