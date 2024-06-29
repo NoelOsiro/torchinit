@@ -1,9 +1,9 @@
-import { ApproachProps } from '@/types';
+import { Benefit } from '@/types';
 import React from 'react';
 
 
 type FormSectionProps = {
-    formData: ApproachProps;
+    formData: Benefit;
     onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
     handleSubmit: (e: React.FormEvent) => void;
     handleFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -12,7 +12,7 @@ type FormSectionProps = {
 };
 
 const FormSection: React.FC<FormSectionProps> = ({ formData, onChange, handleFileChange, handleSubmit,file,isSubmitting }) => {
-    const { title, description, buttonText, tag, caption } = formData;
+    const { title, desc, button, imagePos } = formData;
 
     return (
         <div className="w-full grid grid-cols-1">
@@ -48,11 +48,11 @@ const FormSection: React.FC<FormSectionProps> = ({ formData, onChange, handleFil
                                     Description:
                                 </label>
                                 <textarea
-                                    name="description"
+                                    name="desc"
                                     id="desc"
                                     placeholder="Description"
                                     className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                                    value={description || ''}
+                                    value={desc || ''}
                                     onChange={onChange}
                                 />
                             </div>
@@ -65,59 +65,42 @@ const FormSection: React.FC<FormSectionProps> = ({ formData, onChange, handleFil
                                 >
                                     Button text:
                                 </label>
-                                <input
-                                    type="text"
-                                    name="buttonText"
-                                    id="buttonText"
-                                    placeholder="https://"
+                                <select
+                                    name="button"
+                                    id="button"
                                     className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                                    value={buttonText || ''}
-                                    onChange={onChange}
-                                />
+                                    value={button.toString()} // Convert the 'button' value to a string
+                                    onChange={onChange} // This should handle the change in selection
+                                >
+                                    <option value="true">True</option>
+                                    <option value="false">False</option>
+                                </select>
                             </div>
-                            
-                            {/* Tag text input */}
+
+                            {/* Position input */}
                             <div className="mb-5">
                                 <label
-                                    htmlFor="tag"
+                                    htmlFor="link"
                                     className="mb-3 block text-base font-medium text-[#07074D]"
                                 >
-                                    Tag text:
+                                    Position:
                                 </label>
-                                <input
-                                    type="text"
-                                    name="tag"
-                                    id="tiag"
-                                    placeholder="Tag."
+                                <select
+                                    name="imagePos"
+                                    id="imagePos"
                                     className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                                    value={tag || ''}
-                                    onChange={onChange}
-                                />
-                            </div>
-                            
-                            {/* Caption text input */}
-                            <div className="mb-5">
-                                <label
-                                    htmlFor="caption"
-                                    className="mb-3 block text-base font-medium text-[#07074D]"
+                                    value={imagePos} // Convert the 'button' value to a string
+                                    onChange={onChange} // This should handle the change in selection
                                 >
-                                    Caption text:
-                                </label>
-                                <input
-                                    type="text"
-                                    name="caption"
-                                    id="caption"
-                                    placeholder="Welcome to..."
-                                    className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                                    value={caption || ''}
-                                    onChange={onChange}
-                                />
+                                    <option value="left">Left</option>
+                                    <option value="right">Right</option>
+                                </select>
                             </div>
-                            
+
                             {/* Approach Image file input */}
                             <div className="mb-6 pt-4">
                                 <label className="mb-5 block text-xl font-semibold text-[#07074D]">
-                                    Approach Image
+                                    Benefit Image
                                 </label>
                                 <div className="mb-8">
                                     <input type="file" name="file" id="file" className="sr-only" onChange={handleFileChange} />

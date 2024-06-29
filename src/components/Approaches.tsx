@@ -4,17 +4,9 @@ import { Container } from "@/components/Container";
 import { createClient } from "@/utils/supabase/server";
 import { PostgrestError } from "@supabase/supabase-js";
 import Spinner from "./Spinner";
+import { ApproachProps } from "@/types";
 
-export interface ApproachProps {
-    imgSrc: string;
-    title: string;
-    description: string;
-    buttonText: string;
-    tag: string;
-    imgPos?: "left" | "right";
-    caption: string;
 
-}
 
 export const Approaches = async () => {
     const supabase = createClient();

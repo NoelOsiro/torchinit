@@ -1,47 +1,38 @@
 
-import { ApproachProps } from '@/types';
+import { Value } from '@/types';
 import FormSection from './FormContent';
-import Image from 'next/image';
+
 
 type PageContentProps = {
-    approaches: ApproachProps[];
-    onEdit: (approach: ApproachProps) => void;
-    formData: ApproachProps;
+    values: Value[];
+    onEdit: (value: Value) => void;
+    formData: Value;
     onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
     handleSubmit: (e: React.FormEvent) => void;
-    handleFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    file: File | null;
     isSubmitting: boolean;
 };
 
-const ApproachCard = (
-    { approach, onEdit }: {
-        approach: ApproachProps,
-        onEdit: (approach: ApproachProps) => void
+const ValueCard = (
+    { value, onEdit }: {
+        value: Value,
+        onEdit: (value: Value) => void
     }) => (
-    <div className="relative flex w-full max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
-        <div className="relative m-0 w-2/5 shrink-0 overflow-hidden rounded-xl rounded-r-none bg-white bg-clip-border text-gray-700">
-            <Image
-                src={approach.imgSrc}
-                alt="image"
-                className="h-full w-full object-cover"
-                fill
-            />
-        </div>
+    <div className="relative flex w-f
+    ll max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
         <div className="p-6">
             <h6 className="mb-4 block font-sans text-base font-semibold uppercase leading-relaxed tracking-normal text-pink-500 antialiased">
-                {approach.tag}
+                {value.id}
             </h6>
             <h4 className="mb-2 block font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
-                {approach.title}
+                {value.title}
             </h4>
             <p className="mb-8 block font-sans text-base font-normal leading-relaxed text-gray-700 antialiased">
-                {approach.description}
+                {value.description}
             </p>
             <button
                 className="flex select-none items-center gap-2 rounded-lg py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-pink-500 transition-all hover:bg-pink-500/10 active:bg-pink-500/30"
                 type="button"
-                onClick={() => onEdit(approach)}
+                onClick={() => onEdit(value)}
             >
                 Edit
                 <svg
@@ -66,24 +57,22 @@ const ApproachCard = (
 
 
 const PageContent: React.FC<PageContentProps> = (
-    { approaches,
+    { values,
         onEdit,
         formData,
         onChange,
         handleSubmit,
-        handleFileChange,
-        file,
         isSubmitting
     }) => (
     <div id="main-content" className="h-screen w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
         <main>
             <div className="pt-6 px-4">
                 <div className="w-full grid grid-cols-1 xl:grid-cols-2 gap-4">
-                    {approaches.map((approach) => (
-                        <ApproachCard approach={approach} onEdit={onEdit} key={approach.title} />
+                    {values.map((value) => (
+                        <ValueCard value={value} onEdit={onEdit} key={value.title} />
                     ))}
                 </div>
-                <FormSection formData={formData} onChange={onChange} handleSubmit={handleSubmit} handleFileChange={handleFileChange} file={file} isSubmitting={isSubmitting} />
+                <FormSection formData={formData} onChange={onChange} handleSubmit={handleSubmit} isSubmitting={isSubmitting} />
             </div>
         </main>
     </div>

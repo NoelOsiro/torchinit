@@ -1,11 +1,11 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { createClient } from '@/utils/supabase/client';
 import { Container } from '@/components/Container';
 import Spinner from '@/components/Spinner';
-import { ApproachProps } from '@/components/Approaches';
 import { PostgrestError } from '@supabase/supabase-js';
 import PageContent from './PageContent';
+import { ApproachProps } from '@/types';
 
 const Page = () => {
     const [approaches, setApproaches] = useState<ApproachProps[]>([]);
@@ -91,7 +91,7 @@ const Page = () => {
             }
         }
     };
-    const fetchApproaches = async () => {
+    const fetchApproaches = useCallback(async () => {
         const { data, error }: { data: ApproachProps[] | null, error: PostgrestError | null } = await supabase
             .from('Approaches')
             .select('*')
@@ -100,11 +100,11 @@ const Page = () => {
         if (data) {
             setApproaches(data);
         }
-    };
+    },[supabase]);
 
-    React.useEffect(() => {
+    useEffect(() => {
         fetchApproaches();
-    }, []);
+    }, [fetchApproaches]);
 
     if (!approaches.length) {
         return (
