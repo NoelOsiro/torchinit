@@ -36,3 +36,27 @@ export interface Value {
   description: string;
   icon: string;
 }
+
+export interface TeamMember {
+  id: number;
+  name: string;
+  title: string;
+  description: string;
+  imageSrc: string;
+}
+
+export interface ProgramPoint {
+  desc: string;
+  icon: string;
+  title: string;
+}
+
+export interface Program {
+  id: number;
+  title: string;
+  button: boolean;
+  desc: string;
+  image: string;
+  imagePos: string;
+  Program_points: ProgramPoint[];
+}

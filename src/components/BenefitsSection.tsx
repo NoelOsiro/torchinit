@@ -5,22 +5,9 @@ import { createClient } from '@/utils/supabase/server';
 import { Container } from './Container';
 import Spinner from './Spinner';
 import { PostgrestError } from '@supabase/supabase-js';
+import { Benefit } from '@/types';
 
-interface BenefitPoint {
-    desc: string;
-    icon: string;
-    title: string;
-  }
-  
-  interface Benefit {
-    id: number;
-    title: string;
-    button: boolean;
-    desc: string;
-    image: string;
-    imagePos: 'left' | 'right';
-    Benefits_points: BenefitPoint[];
-  }
+
 
 const BenefitsSection = async () => {
     const supabase = createClient();
@@ -54,7 +41,15 @@ const BenefitsSection = async () => {
         stewardship.
       </SectionTitle>
         {benefits.map((benefit, index) => (
-            <Benefits key={index} data={benefit} />
+            <Benefits 
+            key={index}
+            title={benefit.title}
+            desc={benefit.desc} 
+            id={benefit.id} 
+            button={benefit.button} 
+            image={benefit.image} 
+            imagePos={benefit.imagePos} 
+            Benefits_points={benefit.Benefits_points}            />
         ))} 
     </>
   )

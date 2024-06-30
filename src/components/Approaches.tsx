@@ -45,7 +45,7 @@ export const Approaches = async () => {
 
 
 
-const Approach = ({ imgSrc, title, tag, description, caption, buttonText, imgPos = "left" }: ApproachProps) => {
+const Approach = ({ imgSrc, title, tag, description, caption, buttonText, imgPos }: ApproachProps) => {
     return (
         <div className={`flex flex-col overflow-hidden rounded-md shadow-md ${imgPos === "right" ? "lg:flex-row-reverse" : "lg:flex-row"}`}>
             <figure className="relative dark:bg-gray-500 aspect-video hover:scale-110">

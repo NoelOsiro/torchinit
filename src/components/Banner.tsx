@@ -3,8 +3,7 @@ import Spinner from "./Spinner"
 
 const Banner = async () => {
     const supabase = createClient()
-
-    let { data, error } = await supabase
+    let { data } = await supabase
         .from('Banner')
         .select('*')
         .single()
@@ -13,8 +12,9 @@ const Banner = async () => {
         <div className="bg-green-600">
             <div className="max-w-screen-xl mx-auto px-4 py-3 text-white text-center md:px-8">
                 {data ? (
-                    <p className="font-medium">
+                    <p className="font-bold">
                     {data.text}
+                    <br/>
                     <a href="/blog/vegan-restaurant-week" className="font-semibold underline duration-150 hover:text-indigo-100 inline-flex items-center gap-x-1">
                         Learn more
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
