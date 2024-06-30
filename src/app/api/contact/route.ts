@@ -1,31 +1,27 @@
-import { NextResponse } from 'next/server'
+import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
 // Handles POST requests to /api
-const username = process.env.NEXT_PUBLIC_EMAIL_USERNAME;
-const password = process.env.NEXT_EMAIL_PASSWORD;
-const myEmail = process.env.NEXT_PUBLIC_PERSONAL_EMAIL;
+const username = process.env.NEXT_PUBLIC_EMAIL_USERNAME; // Your Gmail username
+const password = process.env.NEXT_EMAIL_PASSWORD; // Your Gmail password
+const myEmail = process.env.NEXT_PUBLIC_PERSONAL_EMAIL; // Your personal email
 
 export async function POST(request: Request) {
-
-    //get body of request
+    // Get body of request
     const formData = await request.json();
     const { name, email, message } = formData;
 
-
-    // create transporter object
+    // Create transporter object
     const transporter = nodemailer.createTransport({
-        host: "5.135.108.190",
-        port: 465,
-        tls: { rejectUnauthorized: false },
+        service: 'gmail',
         auth: {
-            user: username,
-            pass: password
+            user: process.env.NEXT_PUBLIC_EMAIL_USERNAME,
+            pass: process.env.NEXT_EMAIL_PASSWORD
         }
-    } as nodemailer.TransportOptions);
+    });
+    
 
     try {
-
         const mail = await transporter.sendMail({
             from: email,
             to: myEmail,
@@ -56,14 +52,12 @@ export async function POST(request: Request) {
             </body>
             </html>
             `,
-        })
+        });
 
-        return NextResponse.json({ message: "Success: email was sent" })
+        return NextResponse.json({ message: "Success: email was sent" });
 
     } catch (error) {
-        console.log(error)
-        NextResponse.json({ message: "COULD NOT SEND MESSAGE" }, { status: 500 })
+        console.error(error);
+        return NextResponse.json({ message: "COULD NOT SEND MESSAGE" }, { status: 500 });
     }
-
-
 }
