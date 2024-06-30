@@ -1,7 +1,8 @@
 import Image from "next/image";
 import React, { ForwardRefExoticComponent, RefAttributes, SVGProps } from "react";
 import { Container }  from "@/components/Container";
-import { Program } from "@/types";
+import { Program, ProgramPoint } from "@/types";
+import ICON_MAP from "./Icons";
 
 interface ProgramsProps {
   imgPos?: "left" | "right";
@@ -56,9 +57,8 @@ export const Programs = (props: Program) => {
 
             <div className="w-full mt-5 mb-4">
               {props.Program_points.map((item, index) => (
-                <ProgramPointer key={index} title={item.title} icon={item.icon}>
-                  {item.desc}
-                </ProgramPointer>
+                <ProgramPointer key={index} title={item.title} icon={item.icon} desc={item.desc}/>
+                 
                 
               ))}
               
@@ -79,18 +79,21 @@ export const Programs = (props: Program) => {
   );
 };
 
-function ProgramPointer(props: any) {
+function ProgramPointer(props: ProgramPoint) {
+  const IconComponent = ICON_MAP[props.icon] || ICON_MAP['SproutIcon'];
   return (
       <div className="flex items-start mt-8 space-x-3">
         <div className="flex items-center justify-center flex-shrink-0 mt-1 bg-green-500 rounded-md w-11 h-11 ">
-          <props.icon className= "w-7 h-7 text-green-50"/>
+        {props.icon && React.createElement(IconComponent, {
+          className: "w-7 h-7 text-green-50",
+        })}
         </div>
         <div>
           <h4 className="text-xl font-medium text-gray-800 dark:text-gray-200">
             {props.title}
           </h4>
           <p className="mt-1 text-gray-500 dark:text-gray-400">
-            {props.children}
+            {props.desc}
           </p>
         </div>
       </div>
