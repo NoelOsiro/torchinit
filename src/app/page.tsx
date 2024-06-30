@@ -30,7 +30,7 @@ export default function Home() {
         while investing in the potential of young people as beacons of hope for the future.
       </SectionTitle>
 
-      <Video videoId="hTALjJHKW4g" previewImageUrl="/img/logo.png" />
+      <Video videoId="CnfFugbdrx0" previewImageUrl="/img/logo.png" />
       <Cta />
     </Container>
     <Footer />
