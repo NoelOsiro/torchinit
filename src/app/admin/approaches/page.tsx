@@ -108,7 +108,7 @@ const Page = () => {
 
     if (!approaches.length) {
         return (
-            <Container className="flex flex-col justify-between items-center lg:flex-row lg:items-start">
+            <Container className="flex flex-col h-screen justify-between items-center lg:flex-row lg:items-start">
                 <Spinner />
             </Container>
         );
