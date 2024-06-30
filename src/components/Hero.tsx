@@ -9,6 +9,7 @@ import Spinner from "./Spinner";
 export const Hero = async () => {
   const supabase = createClient()
   
+  
 let { data: Hero, error } = await supabase
 .from('Hero')
 .select('*')
