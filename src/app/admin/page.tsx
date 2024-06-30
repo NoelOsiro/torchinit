@@ -11,6 +11,8 @@ const Page = () => {
         { id: 6, title: 'approaches', description: 'Explore different approaches and strategies.' },
         { id: 7, title: 'team', description: 'Manage team members and roles.' },
         { id: 8, title: 'community', description: 'Engage with community events and initiatives.' },
+        { id: 9, title: 'programs', description: 'Update contact information and social links.' },
+        { id: 10, title: 'help', description: 'Edit about us page content.' },
     ];
 
     return (
@@ -20,7 +22,7 @@ const Page = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                         {cards.map((card) => (
                             <Link key={card.id} href={`/admin/${card.title}`}>
-                                    <div className="bg-white text-center rounded-lg shadow-lg p-6 h-48 cursor-pointer transition duration-300 hover:shadow-xl">
+                                    <div className="bg-white text-center rounded-lg shadow-lg mb-4 p-6 h-48 cursor-pointer transition duration-300 hover:shadow-xl">
                                         <h3 className="text-xl font-semibold text-gray-800 mb-4">{card.title}</h3>
                                         <p className="text-gray-600">{card.description}</p>
                                     </div>
