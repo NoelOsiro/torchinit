@@ -1,4 +1,5 @@
-'use client'
+'use client';
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { createClient } from '@/utils/supabase/client';
 import { Container } from '@/components/Container';
@@ -9,9 +10,18 @@ import Spinner from '@/components/Spinner';
 
 const Page = () => {
     const [programs, setPrograms] = useState<Program[]>([]);
-    const [formData, setFormData] = useState<Program>({title: '', desc: '', button: false, image: 'left', imagePos: 'left', id: 0, Program_points: []});
+    const [formData, setFormData] = useState<Program>({
+        title: '',
+        desc: '',
+        button: false,
+        image: 'left',
+        imagePos: 'left',
+        id: 0,
+        Program_points: [],
+    });
     const [file, setFile] = useState<File | null>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
     const supabase = createClient();
 
     const handleEdit = (program: Program): void => {
@@ -26,7 +36,9 @@ const Page = () => {
         });
     };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>): void => {
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    ): void => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
@@ -35,73 +47,88 @@ const Page = () => {
         setFile(selectedFile);
     };
 
-    const fetchBenefits = useCallback(async () => {
-        const { data, error }: { data: Program[] | null, error: PostgrestError | null } = await supabase
-            .from('Programs')
-            .select('*')
-            .order('id', { ascending: true });
+    const fetchPrograms = useCallback(async () => {
+        try {
+            const { data, error }: { data: Program[] | null; error: PostgrestError | null } =
+                await supabase.from('Programs').select('*').order('id', { ascending: true });
 
-        if (data) {
-            setPrograms(data);
+            if (error) {
+                throw error;
+            }
+
+            if (data) {
+                setPrograms(data);
+            }
+        } catch (error: any) {
+            setMessage({ type: 'error', text: 'Error fetching programs: ' + error.message });
         }
     }, [supabase]);
 
     useEffect(() => {
-        fetchBenefits();
-    }, [fetchBenefits]);
+        fetchPrograms();
+    }, [fetchPrograms]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
-        if (file) {
-            const { data: uploadData, error: uploadError } = await supabase.storage
-                .from('images')
-                .upload(`Benefits/${file.name}`, file);
+        setMessage(null);
 
-            if (uploadError) {
-                setIsSubmitting(false);
-                alert(uploadError.message);
-                return;
-            }
+        try {
+            if (file) {
+                const { data: uploadData, error: uploadError } = await supabase.storage
+                    .from('images')
+                    .upload(`Programs/${formData.id}.jpg`, file);
 
-            const fileUrl = supabase.storage.from('images').getPublicUrl(`Benefits/${file.name}`).data?.publicUrl;
+                if (uploadError) {
+                    throw uploadError;
+                }
 
-            const { data: existingBenefit, error: fetchError } = await supabase
-                .from('Programs')
-                .select('*')
-                .eq('title', formData.title)
-                .single();
+                const fileUrl = supabase.storage.from('images').getPublicUrl(`Programs/${formData.id}.jpg`).data?.publicUrl;
 
-            if (fetchError) {
-                setIsSubmitting(false);
-                alert(fetchError.message);
-                return;
-            }
-
-            if (existingBenefit) {
-                const { error: updateError } = await supabase
+                // Check if program with this title already exists
+                const { data: existingProgram, error: fetchError } = await supabase
                     .from('Programs')
-                    .update({ ...formData, image: fileUrl })
-                    .eq('title', formData.title);
+                    .select('*')
+                    .eq('title', formData.title)
+                    .single();
 
-                if (updateError) {
-                    setIsSubmitting(false);
-                    alert(updateError.message);
+                if (fetchError && fetchError.code !== 'PGRST116') {
+                    throw fetchError;
+                }
+
+                if (existingProgram) {
+                    // Program with this title already exists, update it
+                    const { error: updateError } = await supabase
+                        .from('Programs')
+                        .update({ ...formData, image: fileUrl })
+                        .eq('title', formData.title);
+
+                    if (updateError) {
+                        throw updateError;
+                    } else {
+                        fetchPrograms();
+                        setMessage({ type: 'success', text: 'Program updated successfully!' });
+                    }
                 } else {
-                    fetchBenefits();
+                    // Program with this title does not exist, insert new
+                    const { error: insertError } = await supabase
+                        .from('Programs')
+                        .insert([{ ...formData, image: fileUrl }]);
+
+                    if (insertError) {
+                        throw insertError;
+                    } else {
+                        fetchPrograms();
+                        setMessage({ type: 'success', text: 'New program added successfully!' });
+                    }
                 }
             } else {
-                const { error: insertError } = await supabase
-                    .from('Programs')
-                    .insert([{ ...formData, image: fileUrl }]);
-
-                if (insertError) {
-                    setIsSubmitting(false);
-                    alert(insertError.message);
-                } else {
-                    fetchBenefits();
-                }
+                setMessage({ type: 'error', text: 'Please select a file to upload.' });
             }
+        } catch (error: any) {
+            setMessage({ type: 'error', text: 'Error: ' + error.message });
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -123,6 +150,7 @@ const Page = () => {
             handleFileChange={handleFileChange}
             file={file}
             isSubmitting={isSubmitting}
+            message={message}
         />
     );
 };
