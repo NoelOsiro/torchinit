@@ -10,6 +10,10 @@ type PageContentProps = {
     onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
     handleSubmit: (e: React.FormEvent) => void;
     isSubmitting: boolean;
+    message: {
+        type: "success" | "error";
+        text: string;
+    } | null
 };
 
 const ValueCard = (
@@ -20,9 +24,6 @@ const ValueCard = (
     <div className="relative flex w-f
     ll max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
         <div className="p-6">
-            <h6 className="mb-4 block font-sans text-base font-semibold uppercase leading-relaxed tracking-normal text-pink-500 antialiased">
-                {value.id}
-            </h6>
             <h4 className="mb-2 block font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
                 {value.title}
             </h4>
@@ -62,7 +63,8 @@ const PageContent: React.FC<PageContentProps> = (
         formData,
         onChange,
         handleSubmit,
-        isSubmitting
+        isSubmitting,
+        message
     }) => (
     <div id="main-content" className="h-screen w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
         <main>
@@ -71,8 +73,11 @@ const PageContent: React.FC<PageContentProps> = (
                     {values.map((value) => (
                         <ValueCard value={value} onEdit={onEdit} key={value.title} />
                     ))}
+                    
                 </div>
-                <FormSection formData={formData} onChange={onChange} handleSubmit={handleSubmit} isSubmitting={isSubmitting} />
+                
+                <FormSection formData={formData} onChange={onChange} handleSubmit={handleSubmit} isSubmitting={isSubmitting} message={message} />
+                
             </div>
         </main>
     </div>
