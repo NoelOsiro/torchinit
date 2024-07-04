@@ -12,6 +12,10 @@ type PageContentProps = {
     handleFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     file: File | null;
     isSubmitting: boolean;
+    message: {
+        type: "success" | "error";
+        text: string;
+    } | null
 };
 
 const TeamCard = (
@@ -74,7 +78,8 @@ const PageContent: React.FC<PageContentProps> = (
         handleSubmit,
         handleFileChange,
         file,
-        isSubmitting
+        isSubmitting,
+        message
     }) => (
     <div id="main-content" className="h-screen w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
         <main>
@@ -84,7 +89,7 @@ const PageContent: React.FC<PageContentProps> = (
                         <TeamCard team={team} onEdit={onEdit} key={team.id} />
                     ))}
                 </div>
-                <FormSection formData={formData} onChange={onChange} handleSubmit={handleSubmit} handleFileChange={handleFileChange} file={file} isSubmitting={isSubmitting} />
+                <FormSection formData={formData} onChange={onChange} message={message} handleSubmit={handleSubmit} handleFileChange={handleFileChange} file={file} isSubmitting={isSubmitting} />
             </div>
         </main>
     </div>
