@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
@@ -19,23 +19,26 @@ const Page = () => {
 
     const [hero, setHero] = useState<Hero | null>(null);
     const [loading, setLoading] = useState(true);
-    const [title, setTitle] = useState('');
-    const [paragraph, setParagraph] = useState('');
-    const [link, setLink] = useState('');
     const [file, setFile] = useState<File | null>(null);
     const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
 
-
     useEffect(() => {
         const fetchHero = async () => {
-            let { data: Hero, error } = await supabase.from('Hero').select('*').single();
-            if (Hero) {
-                setHero(Hero);
-                setTitle(Hero.header);
-                setParagraph(Hero.paragraph);
-                setLink(Hero.link);
+            try {
+                const { data, error } = await supabase
+                    .from('Hero')
+                    .select('*')
+                    .single();
+
+                if (error) throw error;
+                if (data) {
+                    setHero(data);
+                }
+            } catch (error: any) {
+                setMessage({ type: 'error', text: 'Error fetching hero: ' + error.message });
+            } finally {
+                setLoading(false);
             }
-            setLoading(false);
         };
 
         fetchHero();
@@ -50,14 +53,40 @@ const Page = () => {
         e.preventDefault();
         setLoading(true);
         setMessage(null);
-        // Handle form submission and file upload logic here
-        console.log({ title, paragraph, link, file });
-        // Add your form submission logic
+
+        try {
+            if (file) {
+                const { error: uploadError } = await supabase.storage
+                    .from('images')
+                    .upload(`Hero/hero.jpeg`, file, { cacheControl: '3600', upsert: true });
+
+                if (uploadError) throw uploadError;
+
+                const { data: publicUrlData } = supabase.storage
+                    .from('images')
+                    .getPublicUrl('Hero/hero.jpeg');
+
+                const { data,error: updateError } = await supabase
+                    .from('Hero')
+                    .update({ imageLink: `${publicUrlData.publicUrl}?t=${new Date().getTime()}` })
+                    .eq('id', 1)
+
+                if (updateError) throw updateError;
+
+                setHero({ ...hero, imageLink: publicUrlData.publicUrl } as Hero);
+
+                setMessage({ type: 'success', text: 'File uploaded successfully!' });
+            }
+        } catch (error: any) {
+            setMessage({ type: 'error', text: 'Error: ' + error.message });
+        } finally {
+            setLoading(false);
+        }
     };
 
     if (loading) {
         return (
-            <Container className="flex flex-wrap ">
+            <Container className="flex flex-wrap h-screen ">
                 <Spinner />
             </Container>
         );
@@ -71,13 +100,12 @@ const Page = () => {
                         <div className="w-full p-24 slider-container">
                             {hero && (
                                 <CarouselItem
-                                header={hero.header}
-                                paragraph={hero.paragraph}
-                                link={hero.link}
-                                imgSrc={hero.imageLink}
-                            />
+                                    header={hero.header}
+                                    paragraph={hero.paragraph}
+                                    link={hero.link}
+                                    imgSrc={hero.imageLink}
+                                />
                             )}
-                            
                         </div>
                     </div>
                     <div className="w-full grid grid-cols-1">
@@ -86,16 +114,16 @@ const Page = () => {
                                 <div className="mx-auto w-full max-w-[550px] bg-white">
                                     <form className="py-6 px-9" onSubmit={handleSubmit}>
                                         <div className="mb-5">
-                                            <label htmlFor="title" className="mb-3 block text-base font-medium text-[#07074D]">
+                                            <label htmlFor="header" className="mb-3 block text-base font-medium text-[#07074D]">
                                                 Title text:
                                             </label>
                                             <input
                                                 type="text"
-                                                name="title"
-                                                id="title"
+                                                name="header"
+                                                id="header"
                                                 placeholder="Welcome to..."
-                                                value={title}
-                                                onChange={(e) => setTitle(e.target.value)}
+                                                value={hero?.header || ''}
+                                                onChange={(e) => setHero({ ...hero, header: e.target.value } as Hero)}
                                                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                                             />
                                         </div>
@@ -107,8 +135,8 @@ const Page = () => {
                                                 name="paragraph"
                                                 id="paragraph"
                                                 placeholder="Description"
-                                                value={paragraph}
-                                                onChange={(e) => setParagraph(e.target.value)}
+                                                value={hero?.paragraph || ''}
+                                                onChange={(e) => setHero({ ...hero, paragraph: e.target.value } as Hero)}
                                                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                                             />
                                         </div>
@@ -121,8 +149,8 @@ const Page = () => {
                                                 name="link"
                                                 id="link"
                                                 placeholder="https://"
-                                                value={link}
-                                                onChange={(e) => setLink(e.target.value)}
+                                                value={hero?.link || ''}
+                                                onChange={(e) => setHero({ ...hero, link: e.target.value } as Hero)}
                                                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                                             />
                                         </div>
@@ -155,6 +183,11 @@ const Page = () => {
                                             </button>
                                         </div>
                                     </form>
+                                    {message && (
+                                        <div className={`mt-4 p-4 rounded text-center ${message.type === 'error' ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>
+                                            {message.text}
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -163,6 +196,6 @@ const Page = () => {
             </main>
         </div>
     );
-}
+};
 
 export default Page;
