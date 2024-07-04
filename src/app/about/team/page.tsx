@@ -1,12 +1,13 @@
 import { Container } from "@/components/Container";
 import { SectionTitle } from "@/components/SectionTitle";
-import { Faq } from "@/components/Faq";
+
 import { Cta } from "@/components/Cta";
 import { Team } from "@/components/Team";
 import { Navbar } from "@/components/Navbar";
 import Banner from "@/components/Banner";
 import Banner2 from "@/components/Banner2";
 import { Footer } from "@/components/Footer";
+import Faq from "@/components/Faq";
 export default function Programs() {
   return (
     <>

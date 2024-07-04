@@ -1,17 +1,45 @@
 
 import React from 'react'
 import Image from 'next/image'
+import { createClient } from '@/utils/supabase/server'
+import { Container } from '@/components/Container'
+import Spinner from '@/components/Spinner'
+import CarouselItem from '@/components/CarouselItem'
 
 
-const page = () => {
+const page = async () => {
+    const supabase = createClient()
+
+    let { data: Hero, error } = await supabase
+        .from('Hero')
+        .select('*')
+        .single()
+    if (!Hero) {
+        return (
+            <Container className="flex flex-wrap ">
+                <Spinner />
+            </Container>
+        )
+    }
     return (
         <div id="main-content" className="h-screen w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
             <main>
                 <div className="pt-6 px-4">
                     <div className="w-full grid grid-cols-1">
+                        <div className="w-full p-24 slider-container">
+                            <CarouselItem
+                                header={Hero.header}
+                                paragraph={Hero.paragraph}
+                                link={Hero.link}
+                                imgSrc={Hero.imageLink}
+                            />
+                        </div>
+                    </div>
+                    <div className="w-full grid grid-cols-1">
                         <div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-2">
                             <div className="flex items-center justify-center p-12">
-                                
+
+
                                 <div className="mx-auto w-full max-w-[550px] bg-white">
                                     <form
                                         className="py-6 px-9"

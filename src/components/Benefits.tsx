@@ -2,37 +2,21 @@ import Image from "next/image";
 import React from "react";
 import { Container } from "@/components/Container";
 import ICON_MAP from "./Icons";
+import { Benefit, BenefitPoint } from '@/types';
 
 
-interface BenefitPoint {
-  desc: string;
-  icon: string;
-  title: string;
-}
-
-interface BenefitsProps {
-  data: {
-    id: number;
-    title: string;
-    button: boolean;
-    desc: string;
-    image: string;
-    imagePos: 'left' | 'right';
-    Benefits_points: BenefitPoint[];
-  }
-}
 
 
-export const Benefits = (props: BenefitsProps) => {
+export const Benefits = (props: Benefit) => {
   return (
     <Container className="flex flex-wrap mb-20 lg:gap-4 lg:flex-nowrap ">
       <div
-        className={`flex items-center justify-center w-full lg:w-1/2 ${props.data.imagePos === "right" ? "lg:order-1" : ""
+        className={`flex items-center justify-center w-full lg:w-1/2 ${props.imagePos === "right" ? "lg:order-1" : ""
           }`}>
         <div className="w-full h-full">
           <Image
-            src={props.data.image}
-            width={521}
+            src={props.image}
+            width={545}
             height={521}
             alt="Benefits"
             className={"object-cover rounded-lg shadow-lg w-full h-full lg:w-11/12 lg:h-11/12 xl:w-11/12 xl:h-11/12"}
@@ -41,24 +25,24 @@ export const Benefits = (props: BenefitsProps) => {
       </div>
 
       <div
-        className={`flex flex-wrap items-center w-full lg:w-1/2 ${props.data.imagePos === "right" ? "lg:justify-end" : ""
+        className={`flex flex-wrap items-center w-full lg:w-1/2 ${props.imagePos === "right" ? "lg:justify-end" : ""
           }`}>
         <div>
           <div className="flex flex-col w-full mt-4">
             <h3 className="max-w-2xl mt-3 text-3xl font-bold leading-snug tracking-tight text-gray-800 lg:leading-tight lg:text-4xl dark:text-white">
-              {props.data.title}
+              {props.title}
             </h3>
             <p className="max-w-2xl py-4 text-lg leading-normal text-gray-500 lg:text-xl xl:text-xl dark:text-gray-300">
-              {props.data.desc}
+              {props.desc}
             </p>
           </div>
           <div className="w-full mt-5 mb-4">
-            {props.data.Benefits_points.map((item, index) => (
-              <Benefit key={index} title={item.title} icon={item.icon} desc={item.desc} />
+            {props.Benefits_points.map((item, index) => (
+              <BenefitPointer key={index} title={item.title} icon={item.icon} desc={item.desc} />
             ))}
 
           </div>
-          {props.data.button && (
+          {props.button && (
             <div className="flex flex-col items-start space-y-3 sm:space-x-4 sm:space-y-0 sm:items-center sm:flex-row mt-4">
               <a
                 href='/blog/plant-based-diet'
@@ -74,7 +58,7 @@ export const Benefits = (props: BenefitsProps) => {
   );
 };
 
-function Benefit(props:BenefitPoint) {
+function BenefitPointer(props:BenefitPoint) {
   const IconComponent = ICON_MAP[props.icon] || ICON_MAP['SproutIcon'];
 
   return (

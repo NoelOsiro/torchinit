@@ -1,129 +1,127 @@
-
-import React from 'react'
-import Image from 'next/image'
-import { createClient } from '@/utils/supabase/server';
+'use client'
+import React, { useCallback, useEffect, useState } from 'react';
+import { createClient } from '@/utils/supabase/client';
 import { Container } from '@/components/Container';
 import Spinner from '@/components/Spinner';
-import { ApproachProps } from '@/components/Approaches';
 import { PostgrestError } from '@supabase/supabase-js';
+import PageContent from './PageContent';
+import { ApproachProps } from '@/types';
 
-
-const page = async () => {
+const Page = () => {
+    const [approaches, setApproaches] = useState<ApproachProps[]>([]);
+    const [formData, setFormData] = useState({ title: '', description: '', buttonText: '', tag: '', caption: '', imgSrc: ''});
+    const [file, setFile] = useState<File | null>(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const supabase = createClient();
-    const { data: approaches, error }: { data: ApproachProps[] | null, error: PostgrestError | null } = await supabase
-        .from('Approaches')
-        .select('*')
-        .order('id', { ascending: true });
-    if (!approaches) {
+
+    const handleEdit = (approach: ApproachProps): void => {
+        setFormData({
+            title: approach.title,
+            description: approach.description,
+            buttonText: approach.buttonText,
+            tag: approach.tag,
+            caption: approach.caption,
+            imgSrc: approach.imgSrc,
+        });
+    };
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>): void => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const selectedFile = e.target.files?.[0] || null;
+        setFile(selectedFile);
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        if (file) {
+            
+            const { data: uploadData, error: uploadError } = await supabase.storage
+                .from('images')
+                .upload(`Approaches/${file.name}`, file);
+
+            if (uploadError) {
+                setIsSubmitting(false);
+                alert(uploadError.message);
+                return;
+            }
+
+            const fileUrl = supabase.storage.from('images').getPublicUrl(`Approaches/${file.name}`).data?.publicUrl;
+
+            // Check if approach with this title already exists
+            const { data: existingApproach, error: fetchError } = await supabase
+                .from('Approaches')
+                .select('*')
+                .eq('title', formData.title)
+                .single();
+
+            if (fetchError) {
+                setIsSubmitting(false);
+                alert(fetchError.message);
+                return;
+            }
+
+            if (existingApproach) {
+                // Approach with this title already exists, update it
+                const { error: updateError } = await supabase
+                    .from('Approaches')
+                    .update({ ...formData, imgSrc: fileUrl })
+                    .eq('title', formData.title);
+
+                if (updateError) {
+                    setIsSubmitting(false);
+                    alert(updateError.message);
+                } else {
+                    fetchApproaches();
+                }
+            } else {
+                // Approach with this title does not exist, insert new
+                const { error: insertError } = await supabase
+                    .from('Approaches')
+                    .insert([{ ...formData, imgSrc: fileUrl }]);
+
+                if (insertError) {
+                    setIsSubmitting(false);
+                    alert(insertError.message);
+                } else {
+                    fetchApproaches();
+                }
+            }
+        }
+    };
+    const fetchApproaches = useCallback(async () => {
+        const { data, error }: { data: ApproachProps[] | null, error: PostgrestError | null } = await supabase
+            .from('Approaches')
+            .select('*')
+            .order('id', { ascending: true });
+
+        if (data) {
+            setApproaches(data);
+        }
+    },[supabase]);
+
+    useEffect(() => {
+        fetchApproaches();
+    }, [fetchApproaches]);
+
+    if (!approaches.length) {
         return (
-            <Container className="flex flex-col justify-between items-center lg:flex-row lg:items-start">
+            <Container className="flex flex-col h-screen justify-between items-center lg:flex-row lg:items-start">
                 <Spinner />
             </Container>
-        )
+        );
     }
-    return (
-        <div id="main-content" className="h-screen w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
-            <main>
-                <div className="pt-6 px-4">
-                    <div className="w-full grid grid-cols-1">
-                        <div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-2">
-                            <div className="flex items-center justify-center p-12">
 
-                                <div className="mx-auto w-full max-w-[550px] bg-white">
-                                    <form
-                                        className="py-6 px-9"
-                                        action="https://formbold.com/s/FORM_ID"
-                                        method="POST"
-                                    >
-                                        <div className="mb-5">
-                                            <label
-                                                htmlFor="title"
-                                                className="mb-3 block text-base font-medium text-[#07074D]"
-                                            >
+    return <PageContent 
+        approaches={approaches}
+        onEdit={handleEdit}
+        formData={formData}
+        onChange={handleChange}
+        handleSubmit={handleSubmit}
+        handleFileChange={handleFileChange}
+        file={file} isSubmitting={isSubmitting} />;
+};
 
-                                                Title text:
-                                            </label>
-                                            <input
-                                                type="text"
-                                                name="title"
-                                                id="title"
-                                                placeholder="Welcome to..."
-                                                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                                            />
-                                        </div>
-                                        <div className="mb-5">
-                                            <label
-                                                htmlFor="desc"
-                                                className="mb-3 block text-base font-medium text-[#07074D]"
-                                            >
-                                                Description:
-                                            </label>
-                                            <input
-                                                type='text'
-                                                name="desc"
-                                                id="desc"
-                                                placeholder="Description"
-                                                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                                            />
-                                        </div>
-                                        <div className="mb-5">
-                                            <label
-                                                htmlFor="link"
-                                                className="mb-3 block text-base font-medium text-[#07074D]"
-                                            >
-                                                Link text:
-                                            </label>
-                                            <input
-                                                type="text"
-                                                name="link"
-                                                id="link"
-                                                placeholder="https://"
-                                                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                                            />
-                                        </div>
-                                        <div className="mb-6 pt-4">
-                                            <label className="mb-5 block text-xl font-semibold text-[#07074D]">
-                                                Upload File
-                                            </label>
-
-                                            <div className="mb-8">
-                                                <input type="file" name="file" id="file" className="sr-only" />
-                                                <label
-                                                    htmlFor="file"
-                                                    className="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center"
-                                                >
-                                                    <div>
-                                                        <span className="mb-2 block text-xl font-semibold text-[#07074D]">
-                                                            Drop files here
-                                                        </span>
-                                                        <span className="mb-2 block text-base font-medium text-[#6B7280]">
-                                                            Or
-                                                        </span>
-                                                        <span
-                                                            className="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-[#07074D]"
-                                                        >
-                                                            Browse
-                                                        </span>
-                                                    </div>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <button
-                                                className="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
-                                            >
-                                                Save
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </main>
-        </div>
-    )
-}
-
-export default page
+export default Page;

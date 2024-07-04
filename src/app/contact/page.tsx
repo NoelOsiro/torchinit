@@ -17,9 +17,9 @@ export default function Contact() {
         preTitle="Contact Us"
         title="We'd love to hear from you"
       >
-        Please fill out the form below and we will get back to you as soon as possible.
+        Please reach us at torchinitiatives@gmail.com
       </SectionTitle>
-      <ContactForm />
+
     </Container>
     <Footer />
     </>

@@ -95,8 +95,8 @@ export function Footer() {
 
         <div className="my-10 text-sm text-center text-gray-600 dark:text-gray-400">
           Copyright © {new Date().getFullYear()}. Made with ♥ by{" "}
-          <a href="https://github.com/NoelOsiro" target="_blank" rel="noopener">
-            NoelOsiro
+          <a href="https://torchinitiatives.or.ke" target="_blank" rel="noopener">
+            Torch Initiatives Kenya
           </a>
         </div>
       </Container>

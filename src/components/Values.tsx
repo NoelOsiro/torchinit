@@ -8,13 +8,13 @@ const Values = async () => {
     const supabase = createClient()
 
     let { data: values, error } = await supabase
-        .from('values')
+        .from('Values')
         .select('*')
         .order('id', { ascending: true })
 
     if (!values) {
         return (
-            <Container className="flex flex-col justify-between items-center lg:flex-row lg:items-start">
+            <Container className="flex flex-col justify-center items-center lg:flex-row lg:items-start">
                 <Spinner />
             </Container>
         )

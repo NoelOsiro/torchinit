@@ -1,5 +1,6 @@
 import { ForwardRefExoticComponent, RefAttributes } from "react";
 import { LucideProps, UsersIcon } from "lucide-react";
+import * as HeroIcons from "@heroicons/react/24/solid";
 import { Flower2Icon, HandCoinsIcon, HeartHandshakeIcon, LeafIcon, RecycleIcon, SproutIcon } from "lucide-react";
 
 // Define an interface for the ICON_MAP
@@ -15,8 +16,8 @@ const ICON_MAP: IconMap = {
   'Flower2Icon': Flower2Icon,
   'HandCoinsIcon': HandCoinsIcon,
   'HeartHandshakeIcon': HeartHandshakeIcon,
-  'UsersIcon': UsersIcon,
-  // Add other icons as needed
+  // Add Heroicons
+  ...HeroIcons,
 };
 
 export default ICON_MAP;
