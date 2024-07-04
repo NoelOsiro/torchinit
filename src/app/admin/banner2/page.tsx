@@ -2,11 +2,13 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { createClient } from "@/utils/supabase/client";
+import Spinner from '@/components/Spinner';
 
 const Page = () => {
     const [file, setFile] = useState<File | null>(null);
     const [imageUrl, setImageUrl] = useState('');
     const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
+    const [loading, setLoading] = useState(false);
 
     const supabase = createClient();
 
@@ -17,6 +19,9 @@ const Page = () => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setLoading(true);
+        setMessage(null); // Clear previous messages
+
         if (file) {
             const { error } = await supabase.storage
                 .from('images')
@@ -28,19 +33,20 @@ const Page = () => {
                 const { data: publicUrlData } = supabase.storage
                     .from('images')
                     .getPublicUrl('Banner/banner.jpeg');
-                    setImageUrl(`${publicUrlData.publicUrl}?t=${new Date().getTime()}`);
+                setImageUrl(`${publicUrlData.publicUrl}?t=${new Date().getTime()}`);
                 setMessage({ type: 'success', text: 'File uploaded successfully!' });
             }
         }
+
+        setLoading(false);
     };
 
-    // Fetch the initial image URL when the component mounts
     useEffect(() => {
         const fetchImageUrl = async () => {
             const { data } = supabase.storage
                 .from('images')
                 .getPublicUrl('Banner/banner.jpeg');
-                setImageUrl(`${data.publicUrl}?t=${new Date().getTime()}`);
+            setImageUrl(`${data.publicUrl}?t=${new Date().getTime()}`);
         };
 
         fetchImageUrl();
@@ -52,14 +58,18 @@ const Page = () => {
                 <div className="pt-6 px-4">
                     <div className="w-full grid grid-cols-1">
                         <div className="mx-auto px-4 py-3 text-white text-center md:px-8">
-                            {imageUrl && (
+                            {imageUrl ? (
                                 <Image
                                     src={imageUrl}
                                     alt='Plant'
-                                    width={1920}
-                                    height={1080}
+                                    width={900}
+                                    height={500}
                                     className="relative z-0 w-full bg-contain bg-center bg-no-repeat sm:rounded-lg"
                                 />
+                            ) : (
+                                <div className='flex justify-center p-20 items-center'>
+                                    <Spinner />
+                                </div>
                             )}
                         </div>
                     </div>
@@ -72,7 +82,6 @@ const Page = () => {
                                             <label className="mb-5 block text-xl font-semibold text-[#07074D]">
                                                 Banner Image: Upload File
                                             </label>
-
                                             <div className="mb-8">
                                                 <input
                                                     type="file"
@@ -101,13 +110,13 @@ const Page = () => {
                                                 </label>
                                             </div>
                                         </div>
-
                                         <div>
                                             <button
                                                 type="submit"
                                                 className="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
+                                                disabled={loading}
                                             >
-                                                Save
+                                                {loading ? <Spinner /> : 'Save'}
                                             </button>
                                         </div>
                                         {message && (

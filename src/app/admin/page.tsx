@@ -1,6 +1,14 @@
+import { createClient } from '@/utils/supabase/server';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
-const Page = () => {
+const Page = async() => {
+    const supabase = createClient();
+    const { data, error } = await supabase.auth.getUser()
+  if (error || !data?.user) {
+        redirect('/login')
+    }
+
     // Example data for cards
     const cards = [
         { id: 1, title: 'banner', description: 'Manage banners and promotional content.' },
