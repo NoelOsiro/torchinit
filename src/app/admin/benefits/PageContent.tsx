@@ -12,6 +12,10 @@ type PageContentProps = {
     handleFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     file: File | null;
     isSubmitting: boolean;
+    message: {
+        type: "success" | "error";
+        text: string;
+    } | null
 };
 
 const BenefitCard = (
@@ -19,8 +23,7 @@ const BenefitCard = (
         benefit: Benefit,
         onEdit: (benefit: Benefit) => void
     }) => (
-    <div className="relative flex w-f
-    ll max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
+    <div className="relative flex w-full max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
         <div className="relative m-0 w-2/5 shrink-0 overflow-hidden rounded-xl rounded-r-none bg-white bg-clip-border text-gray-700">
             <Image
                 src={benefit.image}
@@ -30,9 +33,6 @@ const BenefitCard = (
             />
         </div>
         <div className="p-6">
-            <h6 className="mb-4 block font-sans text-base font-semibold uppercase leading-relaxed tracking-normal text-pink-500 antialiased">
-                {benefit.id}
-            </h6>
             <h4 className="mb-2 block font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
                 {benefit.title}
             </h4>
@@ -74,7 +74,8 @@ const PageContent: React.FC<PageContentProps> = (
         handleSubmit,
         handleFileChange,
         file,
-        isSubmitting
+        isSubmitting,
+        message
     }) => (
     <div id="main-content" className="h-screen w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
         <main>
@@ -84,7 +85,7 @@ const PageContent: React.FC<PageContentProps> = (
                         <BenefitCard benefit={benefit} onEdit={onEdit} key={benefit.title} />
                     ))}
                 </div>
-                <FormSection formData={formData} onChange={onChange} handleSubmit={handleSubmit} handleFileChange={handleFileChange} file={file} isSubmitting={isSubmitting} />
+                <FormSection formData={formData} onChange={onChange} handleSubmit={handleSubmit} message={message} handleFileChange={handleFileChange} file={file} isSubmitting={isSubmitting} />
             </div>
         </main>
     </div>

@@ -1,4 +1,5 @@
-'use client'
+'use client';
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { createClient } from '@/utils/supabase/client';
 import { Container } from '@/components/Container';
@@ -9,9 +10,18 @@ import Spinner from '@/components/Spinner';
 
 const Page = () => {
     const [benefits, setBenefits] = useState<Benefit[]>([]);
-    const [formData, setFormData] = useState<Benefit>({title: '', desc: '', button: false, image: 'left', imagePos: 'left', id: 0, Benefits_points: []});
+    const [formData, setFormData] = useState<Benefit>({
+        title: '',
+        desc: '',
+        button: false,
+        image: 'left',
+        imagePos: 'left',
+        id: 0,
+        Benefits_points: [],
+    });
     const [file, setFile] = useState<File | null>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
     const supabase = createClient();
 
     const handleEdit = (benefit: Benefit): void => {
@@ -26,7 +36,9 @@ const Page = () => {
         });
     };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>): void => {
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    ): void => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
@@ -36,13 +48,19 @@ const Page = () => {
     };
 
     const fetchBenefits = useCallback(async () => {
-        const { data, error }: { data: Benefit[] | null, error: PostgrestError | null } = await supabase
-            .from('Benefits')
-            .select('*')
-            .order('id', { ascending: true });
+        try {
+            const { data, error }: { data: Benefit[] | null; error: PostgrestError | null } =
+                await supabase.from('Benefits').select('*').order('id', { ascending: true });
 
-        if (data) {
-            setBenefits(data);
+            if (error) {
+                throw error;
+            }
+
+            if (data) {
+                setBenefits(data);
+            }
+        } catch (error: any) {
+            setMessage({ type: 'error', text: 'Error fetching benefits: ' + error.message });
         }
     }, [supabase]);
 
@@ -53,55 +71,62 @@ const Page = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
-        if (file) {
-            const { data: uploadData, error: uploadError } = await supabase.storage
-                .from('images')
-                .upload(`Benefits/${file.name}`, file);
+        setMessage(null);
 
-            if (uploadError) {
-                setIsSubmitting(false);
-                alert(uploadError.message);
-                return;
-            }
+        try {
+            if (file) {
+                // Upload file to storage
+                const { data: uploadData, error: uploadError } = await supabase.storage
+                    .from('images')
+                    .upload(`Benefits/${formData.id}.jpg`, file, { cacheControl: '3600', upsert: true });
 
-            const fileUrl = supabase.storage.from('images').getPublicUrl(`Benefits/${file.name}`).data?.publicUrl;
+                if (uploadError) {
+                    throw uploadError;
+                }
 
-            const { data: existingBenefit, error: fetchError } = await supabase
-                .from('Benefits')
-                .select('*')
-                .eq('title', formData.title)
-                .single();
+                const fileUrl = supabase.storage.from('images').getPublicUrl(`Benefits/${formData.id}.jpg`).data?.publicUrl;
 
-            if (fetchError) {
-                setIsSubmitting(false);
-                alert(fetchError.message);
-                return;
-            }
-
-            if (existingBenefit) {
-                const { error: updateError } = await supabase
+                const { data: existingBenefit, error: fetchError } = await supabase
                     .from('Benefits')
-                    .update({ ...formData, image: fileUrl })
-                    .eq('title', formData.title);
+                    .select('*')
+                    .eq('title', formData.title)
+                    .single();
 
-                if (updateError) {
-                    setIsSubmitting(false);
-                    alert(updateError.message);
+                if (fetchError) {
+                    throw fetchError;
+                }
+
+                if (existingBenefit) {
+                    const { error: updateError } = await supabase
+                        .from('Benefits')
+                        .update({image: fileUrl })
+                        .eq('title', formData.title);
+
+                    if (updateError) {
+                        throw updateError;
+                    } else {
+                        fetchBenefits();
+                        setMessage({ type: 'success', text: 'Benefit updated successfully!' });
+                    }
                 } else {
-                    fetchBenefits();
+                    const { error: insertError } = await supabase
+                        .from('Benefits')
+                        .insert([{ ...formData, image: fileUrl }]);
+
+                    if (insertError) {
+                        throw insertError;
+                    } else {
+                        fetchBenefits();
+                        setMessage({ type: 'success', text: 'New benefit added successfully!' });
+                    }
                 }
             } else {
-                const { error: insertError } = await supabase
-                    .from('Benefits')
-                    .insert([{ ...formData, image: fileUrl }]);
-
-                if (insertError) {
-                    setIsSubmitting(false);
-                    alert(insertError.message);
-                } else {
-                    fetchBenefits();
-                }
+                setMessage({ type: 'error', text: 'Please select a file to upload.' });
             }
+        } catch (error: any) {
+            setMessage({ type: 'error', text: 'Error: ' + error.message });
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -123,6 +148,7 @@ const Page = () => {
             handleFileChange={handleFileChange}
             file={file}
             isSubmitting={isSubmitting}
+            message={message}
         />
     );
 };
