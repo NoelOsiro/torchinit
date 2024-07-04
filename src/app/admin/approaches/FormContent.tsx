@@ -9,9 +9,13 @@ type FormSectionProps = {
     handleFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     file: File | null;
     isSubmitting: boolean;
+    message: {
+        type: "success" | "error";
+        text: string;
+    } | null
 };
 
-const FormSection: React.FC<FormSectionProps> = ({ formData, onChange, handleFileChange, handleSubmit,file,isSubmitting }) => {
+const FormSection: React.FC<FormSectionProps> = ({ formData, onChange, handleFileChange, handleSubmit,file,isSubmitting, message }) => {
     const { title, description, buttonText, tag, caption } = formData;
 
     return (
@@ -147,6 +151,11 @@ const FormSection: React.FC<FormSectionProps> = ({ formData, onChange, handleFil
                                     {isSubmitting ? 'Saving...' : 'Save'}
                                 </button>
                             </div>
+                            {message && (
+                                <div className={`mt-4 p-4 rounded text-center ${message.type === 'error' ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>
+                                    {message.text}
+                                </div>
+                            )}
                         </form>
                     </div>
                 </div>

@@ -5,6 +5,7 @@ export interface PageProps {
   searchParams: {};
 }
 export interface ApproachProps {
+  id:number;
   imgSrc: string;
   title: string;
   description: string;
