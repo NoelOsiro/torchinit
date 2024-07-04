@@ -27,6 +27,7 @@ export const Approaches = async () => {
             <div className="container mx-auto space-y-12">
                 {approaches.map((item, index) => (
                     <Approach
+                        id={item.id}
                         key={index}
                         imgSrc={item.imgSrc}
                         title={item.title}
