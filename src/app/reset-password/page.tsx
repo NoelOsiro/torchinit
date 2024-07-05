@@ -1,7 +1,7 @@
 // pages/reset-password.tsx
 'use client'
 import React, { useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 
 const ResetPasswordPage = () => {
@@ -24,9 +24,9 @@ const ResetPasswordPage = () => {
             return;
         }
 
-        const { error } = await supabase.auth.resetPasswordForEmail(email,
-            redirectTo:'/'
-        );
+        const { data, error } = await supabase.auth.updateUser({
+            password: password
+          })
 
         if (error) {
             setError(error.message);
