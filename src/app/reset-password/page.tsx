@@ -24,7 +24,7 @@ const ResetPasswordPage = () => {
             return;
         }
 
-        const { error } = await supabase.auth.api.updateUser(email, { password });
+        const { error } = await supabase.auth.updateUser(email, { password });
 
         if (error) {
             setError(error.message);
