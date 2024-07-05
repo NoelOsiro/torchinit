@@ -8,8 +8,6 @@ const ResetPasswordPage = () => {
     const supabase = createClient();
     const router = useRouter();
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
@@ -18,14 +16,8 @@ const ResetPasswordPage = () => {
         setLoading(true);
         setError('');
 
-        if (password !== confirmPassword) {
-            setError('Passwords do not match.');
-            setLoading(false);
-            return;
-        }
-
         const { error } = await supabase.auth.resetPasswordForEmail(email,
-            redirectTo:'/'
+            redirectTo:'/reset-password'
         );
 
         if (error) {
@@ -61,37 +53,7 @@ const ResetPasswordPage = () => {
                                         required
                                     />
                                 </div>
-
-                                <div className="mt-6">
-                                    <label htmlFor="password" className="block mb-2 text-sm text-gray-600 dark:text-gray-200">New Password</label>
-                                    <input
-                                        type="password"
-                                        name="password"
-                                        id="password"
-                                        placeholder="Your New Password"
-                                        value={password}
-                                        onChange={(e) => setPassword(e.target.value)}
-                                        className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-                                        required
-                                    />
-                                </div>
-
-                                <div className="mt-6">
-                                    <label htmlFor="confirmPassword" className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Confirm Password</label>
-                                    <input
-                                        type="password"
-                                        name="confirmPassword"
-                                        id="confirmPassword"
-                                        placeholder="Confirm New Password"
-                                        value={confirmPassword}
-                                        onChange={(e) => setConfirmPassword(e.target.value)}
-                                        className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-                                        required
-                                    />
-                                </div>
-
                                 {error && <p className="mt-4 text-sm text-red-600">{error}</p>}
-
                                 <div className="mt-6">
                                     <button
                                         type="submit"
