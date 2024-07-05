@@ -1,5 +1,5 @@
 // pages/reset-password.tsx
-
+'use client'
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { createClient } from '@/utils/supabase/client';
